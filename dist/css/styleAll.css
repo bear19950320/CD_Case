@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ol,ul{
+    list-style: none;
+}
+html,body{
+    min-width: 1170px !important;
+    overflow: auto;
+    font-size: 14px;
+}
+
+.layui-login {
+    background: #fff;
+    border:1px solid rgb(210, 214, 214);
+    border-radius: 5px;
+    vertical-align: middle;
+    padding: 10px 0;
+    margin-top: 20rem;
+}
+.layui-login>input {
+    margin-top: 10px;
+}
+.layui-login>form{
+    padding: 20px;
+}
+.layui-login>form>input {
+    margin-top: 10px;
+}
+
+.btnCenter {
+    text-align: center;
+    margin: 0 auto;
+}
