@@ -1,16 +1,54 @@
+/* 自动高度 : automatic
+
+*/
 *{
     margin: 0;
     padding: 0;
+}
+a,p,span,h1,h2,h3,h4,h5{
+    display: inline-block;
 }
 ol,ul{
     list-style: none;
 }
 html,body{
     min-width: 1170px !important;
+    height: 100%;
     overflow: auto;
     font-size: 14px;
+    
+}
+.automatic::after{
+    display: block;
+    content: "";
+    clear: both;
 }
 
+*::-webkit-scrollbar{
+    background: red
+}
+*::-webkit-scrollbar-button{
+    display: none;
+}
+*::-webkit-scrollbar-track{
+    background: yellow
+}
+*::-webkit-scrollbar-track-piece{
+    background: rgb(123, 131, 143);
+}
+*::-webkit-scrollbar-thumb  {
+    background:#c5ced0;
+    border-radius: 5px;
+    width: 10px;
+    opacity: 0.5;
+}
+*::-webkit-scrollbar-corner{
+background: violet
+}
+*::-webkit-resizer  {
+    background: #3c8dbc
+}
+/* 登录样式 */
 .layui-login {
     background: #fff;
     border:1px solid rgb(210, 214, 214);
@@ -20,16 +58,52 @@ html,body{
     margin-top: 20rem;
 }
 .layui-login>input {
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .layui-login>form{
     padding: 20px;
 }
 .layui-login>form>input {
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.btnCenter {
+/* 公用身体 */
+#header{
+    position: relative;
+    height: 50px;
+    background: #3c8dbc;
+}
+#headLogo{
+    position: absolute;
+    height: 50px;
+    width: 220px;
+    background: #367fa9;
+}
+.section-con{
+    width: 100%;
+    height:calc(100% - 40px);
+    background: rgb(123, 131, 143);
+}
+#MeuNav{
+    position: relative;
+    width: 220px;
+    height: 100%;
+    float: left;
+}
+#MeuNav-btn{
+    background: #3c8dbc;
+    border:0;
+    position: absolute;
+    height: 50px;
+    width: 42px;
+    color:#fff;
+    line-height: 50px;
     text-align: center;
-    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: 600;
+    top:-50px;
+    right: -42px;
+}
+#MeuNav-btn:hover{
+    background: #367fa9;
 }
