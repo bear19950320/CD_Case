@@ -1,9 +1,12 @@
 <link rel="stylesheet" type="text/css" href="./dist/layui/css/layui.css"/>
-<div class="layui-side-scroll">
+<button id="MeuNav-btn">
+    <i class="iconfont icon-caidan"></i>
+</button>
+<div class="layui-side-scroll" style="top:0;bottom: 0"> 
     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-    <ul class="layui-nav layui-nav-tree" lay-filter="test">
+    <ul class="layui-nav layui-nav-tree" lay-filter="test" style="height: 100%;width: 100%;">
         <li class="layui-nav-item layui-nav-itemed">
-            <a class="" href="javascript:;">所有商品</a>
+            <a class="" href="javascript:;"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe68e;</i>  所有商品</a>
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;">列表一</a>
@@ -20,7 +23,7 @@
             </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">解决方案</a>
+            <a href="javascript:;"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe68e;</i> 解决方案</a>
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;">列表一</a>
@@ -34,16 +37,42 @@
             </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="">云市场</a>
+            <a href=""><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe735;</i>  云市场</a>
         </li>
         <li class="layui-nav-item">
-            <a href="">发布商品</a>
+            <a href=""><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe68e;</i>  发布商品</a>
         </li>
     </ul>
+    <ul id="hideIcon"></ul>
 </div>
 <script src="./dist/layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
 <script>
 layui.use('element', function(){
   var element = layui.element;
 });
+$(document).ready(function(){
+    hideIcon();
+})
+
+var hideIcon=function(){
+    var htmlIcon='';
+    $("#MeuNav ul>li").each(function(i){
+        htmlIcon+='<li><i class="layui-icon">'+$(this).find('a>i').html()+'<i></li>'
+    })
+    $("#hideIcon").html(htmlIcon)
+}
+/* meuClick */
+var flag=0;
+$("#MeuNav-btn").click(function(){
+    flag++;
+    if(flag%2==0){
+        $("#MeuNav,#headLogo").animate({"left":"0px"})
+    }else {
+        console.log($("#MeuNav ul>li>a>i").eq(0).clone('outerHTML', '<i></i>'))
+        $(this).html($("#MeuNav ul>li>a>i").eq(0).clone('outerHTML', '<i>'))
+        
+        $("#MeuNav,#headLogo").animate({"left":"-220px"})
+    }
+  
+})
 </script>

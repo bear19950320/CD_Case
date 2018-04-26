@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+            <title>登录 </title>
+            <!-- <link href="main/img/logo.webp" rel="icon" type="image/icon"> -->
+            <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+            <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+            <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+            <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+            <!-- 引用的公用CSS样式 -->
+            <link rel="stylesheet" href="../../dist/css/styleAll.css">
+    
+            <!-- 最新的layui的CSS引用  -->
+            <link rel="stylesheet" type="text/css" href="../../dist/layui/css/layui.css"/>
+            <link rel="stylesheet" type="text/css" href="../../dist/layui/css/modules/layer/default/layer.css"/>
+        </head>
+        <body class="layui-row" style="background: rgb(123, 131, 143)">
+            <!-- 头部  -->
+            <header id="head"></header>
+            
+            <div class="layui-col-lg2 layui-col-lg-offset5 layui-col-md4 layui-col-md-offset4 layui-col-sm4 layui-col-sm-offset3  layui-col-xs4 layui-col-xs-offset3 login">
+                <!-- 身体  -->
+                <section class="content layui-login" id="section" >
+                        <!-- 登录的提交  -->
+                        <form action="##" class="layui-form">
+                            <input type="text" class="layui-input inputVal" id="adminName" title="用户名"  name="" placeholder="用户名" id="">
+                            <input type="password" class="layui-input inputVal" id="adminPassword" title="密码" name="" placeholder="密码" id="">
+                            <!-- <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="开|关">
+                                </div>
+                            </div> -->
+                            <div style="margin: auto;display: block;" class="layui-btn layui-btn-normal" onclick="login()">登录</div>
+                        </form>
+                </section>
+            </div>
+            <!-- 调用JS的Start -->
+            <script src="../../dist/js/jquery.min.js"></script>
+    
+            <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+            <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            <!-- 最新的layui的Js引用  -->
+            <script src="../../dist/layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
+            <script src="../../dist/layui/lay/modules/layer.js"></script>
+    
+             <!-- 调用JS的End -->
+             <script>
+                //  head的引用  
+                $("#head").load('./components/head.html',function(){
+                    $(this).css('color','red')
+                });
+                layui.use('form', function(){
+                    var form = layui.form;
+                
+                });
+                var login = function(){
+                    // $("#section .inputVal").each(function(){
+                    //     if(!$(this).val()){
+                    //         layer.tips($(this).attr("title")+'不能为空', '#'+$(this).attr('id'), {tips:[2,'red']});    
+                    //     }
+                    // })
+                    if( ! $("#adminName").val() ){
+                        layer.tips('用户名不能为空', '#adminName', {tips:[2,'red']});
+                        return ;
+                    }else if( ! $("#adminPassword").val() ){
+                        layer.tips('密码不能为空', '#adminPassword', {tips:[2,'red']});
+                        return ;
+                    }else{
+                        layer.msg('登录中', {
+                            icon: 16
+                            ,shade: 0.21
+                            ,time:1000
+                        });
+                        setTimeout(function(){
+                            location.href='../../index.html'
+                        },1500)
+                        sessionStorage.login= true ;
+                    }
+                }
+             </script>
+        </body>
+    </html>
