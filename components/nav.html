@@ -54,13 +54,13 @@
                 <i class="layui-icon" style=" color: #1E9FFF;">&#xe68e;</i> 所有商品</a>
             <dl class="layui-nav-child">
                 <dd>
-                    <a href="javascript:;">列表一</a>
+                    <a href="javascript:;" goUrl="pie">饼状图</a>
                 </dd>
                 <dd>
-                    <a href="javascript:;">列表二</a>
+                    <a href="javascript:;" goUrl="witerLine">水平面折线图</a>
                 </dd>
                 <dd>
-                    <a href="javascript:;">列表三</a>
+                    <a href="javascript:;" goUrl="float">浮点数表</a>
                 </dd>
                 <dd>
                     <a href="">超链接</a>
@@ -72,7 +72,7 @@
                 <i class="layui-icon" style="color: #1E9FFF;">&#xe68e;</i> 解决方案</a>
             <dl class="layui-nav-child">
                 <dd>
-                    <a href="javascript:;">列表一</a>
+                    <a href="javascript:;" goUrl='table'>table</a>
                 </dd>
                 <dd>
                     <a href="javascript:;">列表二</a>
@@ -100,6 +100,15 @@
     });
     $(document).ready(function () {
         hideIcon();
+    });
+    $("#menu a").each(function(){
+        $(this).click(function(){
+            if($(this).attr('goUrl')){
+                $("#iframe-content").attr("src",'./pages/'+$(this).attr('goUrl')+'/index.html')
+            }else{
+                return false;
+            }
+        })
     })
 
     var hideIcon = function () {
@@ -124,6 +133,5 @@
             $("#content").animate({ width: $(window).width() - 30 + 'px', left: "35px" })
             $("#headAdmin").animate({ "width": $(window).width() - 60 + 'px' })
         }
-
     })
 </script>

@@ -16,12 +16,12 @@
 <body class="layui-row" style="background: rgb(123, 131, 143)">
     <!-- 头部  -->
     <header id="header"></header>
-    <section class="section-con automatic">
+    <section class="section-con automatic" >
         <!-- 菜单栏 -->
         <aside id="MeuNav"></aside>
         <!-- 内容栏 -->
         <div id="content">
-
+            <iframe src="./pages/index/index.html" id="iframe-content" frameborder="0"></iframe>
         </div>
     </section>
 
@@ -44,9 +44,12 @@
         });
         $(window).resize(function () {
             var winHeight = $(window).height();
-            $(".section-con").css({
-                height: winHeight - 50 + 'px'
-            })
+            $(".section-con,#content").css({
+                height: winHeight - 52 + 'px'
+            });
+            // $("#content").css({
+            //     height: winHeight - 52 + 'px'
+            // });
         });
         $("#header").load('./components/head.html', function () {
             // $(this).css('color','red')
