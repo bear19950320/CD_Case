@@ -1,0 +1,209 @@
+<style>
+    #header {
+        position: relative;
+        height: 50px;
+        background: #3c8dbc;
+    }
+
+    #headLogo {
+        position: absolute;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+        line-height: 50px;
+        font-size: 1.5rem;
+        height: 50px;
+        width: 220px;
+        background: #367fa9;
+        float: left;
+    }
+
+    #headAdmin {
+        width: calc(100% - 220px);
+        height: 50px;
+        line-height: 50px;
+        float: right;
+        padding-left: 50px;
+        background: #fff;
+    }
+
+    .full-con {
+        float: left;
+        min-width: 250px !important;
+        width: 250px;
+        height: 50px;
+    }
+
+    .full-con>.full-screen-btn-con {
+        float: left;
+        width: 40px;
+        height: 50px;
+    }
+
+    .full-screen-btn {
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    #headAdmin>.headList {
+        float: left;
+        height: 50px;
+        width: calc(100% - 250px)
+    }
+
+    .full-admin {
+        float: left;
+        min-width: 150px;
+        width: 150px;
+        height: 50px;
+    }
+
+    #admin-btn {
+        position: relative;
+        text-align: left;
+    }
+
+    #admin-btn>ul {
+        z-index: 999;
+        display: none;
+        position: absolute;
+        top: 41px;
+        left: 0;
+        background: #fff;
+        width: 100px;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.2);
+        box-shadow: 0px 0px 1px 1px #000000;
+        border-radius: 5px;
+    }
+
+    #admin-btn>ul>li {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-bottom: 1px solid rgba(153, 153, 153, 0.2);
+    }
+
+    #admin-btn>ul>li>a {
+        width: 100%;
+        line-height: 18px;
+        height: 24px;
+        padding: 3px 0;
+    }
+
+    #admin-btn>ul>li>a:hover {
+        background: #eae2e2;
+    }
+
+    #admin-btn>button:hover {
+        border-color: #C9C9C9;
+    }
+
+    #admin-header {
+        width: 44px;
+        margin: 3px;
+        height: 44px;
+        border-radius: 50%;
+        background: url(http://ww3.sinaimg.cn/bmiddle/9d5ef2bbgy1fqomok0vp2j20b40b4jth.jpg)no-repeat center;
+        background-size: 100% 100%;
+        float: right;
+    }
+</style>
+<!-- 导航条的logo提示 -->
+<span id="headLogo">人事信息管理</span>
+<!--  导航头部的admin展示栏  -->
+<div id="headAdmin">
+    <div class="headList">
+        <button class="layui-btn layui-btn-primary">首页</button>
+    </div>
+    <div class="full-con">
+        <div class="full-screen-btn-con">
+            <div class="full-screen-btn" title="全屏">
+                <i class="iconfont icon-quanping" id='winRow'></i>
+            </div>
+        </div>
+        <div class="full-screen-btn-con">
+            <div class="full-screen-btn" title="锁屏">
+                <i class="iconfont icon-suo"></i>
+            </div>
+        </div>
+        <div class="full-admin">
+            <div class="full-screen-btn" id='admin-btn'>
+                <button class="layui-btn layui-btn-primary layui-btn-sm">
+                    <em>admin</em>&nbsp;&nbsp;&nbsp;
+                    <i class="layui-icon">&#xe625;</i>
+                </button>
+                <!-- 用户名的菜单 -->
+                <ul>
+                    <li>
+                        <a href="javascript:;">个人中心</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" onclick="loginOut()">退出登录</a>
+                    </li>
+                </ul>
+                <!-- 用户头像 -->
+                <div id="admin-header"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // 全屏点击
+    var flag = 0;
+    $('#winRow').click(function () {
+        flag++;
+        if (flag % 2 == 0) {
+            exitFullscreen();
+            $(this).parent("div").attr("title", "全屏")
+            $(this).removeClass('icon-tuichuquanping');
+            $(this).addClass('icon-quanping');
+        } else {
+            fullScreen(document.documentElement);
+            $(this).parent("div").attr("title", "退出全屏")
+            $(this).removeClass('icon-quanping');
+            $(this).addClass('icon-tuichuquanping');
+        }
+
+    });
+    // 用户名点击展现用户菜单栏
+    var flagAdmin = 0;
+    $("#admin-btn>button").click(function () {
+        flagAdmin++;
+        if (flagAdmin % 2 == 0) {
+            $(this).siblings('ul').css({ "display": "none" })
+        } else {
+            // $(this).find("i").
+            $(this).siblings('ul').css({ "display": "block" })
+        }
+    });
+    // 登出点击
+    var loginOut = function () {
+        sessionStorage.removeItem('login')
+        location.reload();
+    }
+    // 开启全屏
+    function fullScreen(element) {
+        if (element.requestFullScreen) {
+            element.requestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        }
+    }
+    // 退出全屏
+    function exitFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
+
+</script>

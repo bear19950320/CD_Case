@@ -1,0 +1,9 @@
+/* layui的css */
+@import '../layui/css/layui.css';
+@import '../layui/css/modules/layer/default/layer.css';
+/* boot的主题css一般不引入 */
+/* @import 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'; */
+/* 最新版本的 Bootstrap 核心 CSS 文件 */
+@import 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css';
+/* 字体的css */
+@import '//at.alicdn.com/t/font_643306_0m5h4jvs5h8mpldi.css';

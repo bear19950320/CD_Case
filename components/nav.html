@@ -1,9 +1,57 @@
-<link rel="stylesheet" type="text/css" href="./dist/layui/css/layui.css"/>
-<div class="layui-side-scroll">
+<style>
+    #MeuNav {
+        position: relative;
+        width: 220px;
+        height: 100%;
+        float: left;
+    }
+
+    #MeuNav-btn {
+        background: #3c8dbc;
+        border: 0;
+        position: absolute;
+        height: 50px;
+        width: 42px;
+        color: #fff;
+        line-height: 50px;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 600;
+        top: -50px;
+        right: -42px;
+    }
+
+    #MeuNav-btn:hover {
+        background: #367fa9;
+    }
+
+    #hideIcon {
+        width: 30px;
+        height: 100%;
+        float: right;
+        background: #393D49;
+    }
+
+    #hideIcon>li {
+        color: #fff;
+        width: 100%;
+        height: 30px;
+        padding: 5px;
+        font-size: 15px;
+        text-align: center;
+        line-height: 30px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="./dist/layui/css/layui.css" />
+<button id="MeuNav-btn">
+    <i class="iconfont icon-caidan"></i>
+</button>
+<div class="layui-side-scroll" style="top:0;bottom: 0">
     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-    <ul class="layui-nav layui-nav-tree" lay-filter="test">
+    <ul class="layui-nav layui-nav-tree" id="menu" lay-filter="test" style="height: 100%;width: 100%;">
         <li class="layui-nav-item layui-nav-itemed">
-            <a class="" href="javascript:;">所有商品</a>
+            <a class="" href="javascript:;">
+                <i class="layui-icon" style=" color: #1E9FFF;">&#xe68e;</i> 所有商品</a>
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;">列表一</a>
@@ -20,7 +68,8 @@
             </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;">解决方案</a>
+            <a href="javascript:;">
+                <i class="layui-icon" style="color: #1E9FFF;">&#xe68e;</i> 解决方案</a>
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;">列表一</a>
@@ -34,16 +83,47 @@
             </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="">云市场</a>
+            <a href="">
+                <i class="layui-icon" style=" color: #1E9FFF;">&#xe735;</i> 云市场</a>
         </li>
         <li class="layui-nav-item">
-            <a href="">发布商品</a>
+            <a href="">
+                <i class="layui-icon" style=" color: #1E9FFF;">&#xe68e;</i> 发布商品</a>
         </li>
     </ul>
+    <ul id="hideIcon" style="display: none;"></ul>
 </div>
 <script src="./dist/layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
 <script>
-layui.use('element', function(){
-  var element = layui.element;
-});
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+    $(document).ready(function () {
+        hideIcon();
+    })
+
+    var hideIcon = function () {
+        var htmlIcon = '';
+        $("#MeuNav ul>li").each(function (i) {
+            htmlIcon += '<li><i class="layui-icon">' + $(this).find('a>i').html() + '<i></li>'
+        })
+        $("#hideIcon").html(htmlIcon)
+    }
+    /* meuClick */
+    var flag = 0;
+    $("#MeuNav-btn").click(function () {
+        flag++;
+        if (flag % 2 == 0) {
+            $("#menu").show(); $("#hideIcon").hide();
+            $("#MeuNav,#headLogo").animate({ "left": "0px" })
+            $("#content").animate({ width: $(window).width() - 225 + 'px', left: "225px" })
+            $("#headAdmin").animate({ "width": $(window).width() - 220 + 'px' })
+        } else {
+            $("#menu").hide(); $("#hideIcon").show();
+            $("#MeuNav,#headLogo").animate({ "left": "-190px" })
+            $("#content").animate({ width: $(window).width() - 30 + 'px', left: "35px" })
+            $("#headAdmin").animate({ "width": $(window).width() - 60 + 'px' })
+        }
+
+    })
 </script>
