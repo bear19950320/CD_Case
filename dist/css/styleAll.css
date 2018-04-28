@@ -2,94 +2,155 @@
 
 */
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
-a,p,span,h1,h2,h3,h4,h5{
+
+a, p, span, h1, h2, h3, h4, h5 {
     display: inline-block;
 }
-a{
+
+a {
     text-decoration: none !important;
 }
-ol,ul{
+
+ol, ul {
     list-style: none;
 }
-html,body{
+
+html, body {
     min-width: 1170px !important;
     height: 100%;
     overflow: auto;
     font-size: 14px;
-    
 }
-.automatic::after{
+
+.automatic::after {
     display: block;
     content: "";
     clear: both;
 }
 
-*::-webkit-scrollbar{
+#menu::-webkit-scrollbar {
     background: red
 }
-*::-webkit-scrollbar-button{
+
+#menu::-webkit-scrollbar-button {
     display: none;
 }
-*::-webkit-scrollbar-track{
+
+#menu::-webkit-scrollbar-track {
     background: yellow
 }
-*::-webkit-scrollbar-track-piece{
+
+#menu::-webkit-scrollbar-track-piece {
     background: rgb(123, 131, 143);
 }
-*::-webkit-scrollbar-thumb  {
-    background:#c5ced0;
+#menu::-webkit-scrollbar-thumb {
+    background: #c5ced0;
     border-radius: 5px;
     width: 10px;
     opacity: 0.5;
 }
-*::-webkit-scrollbar-corner{
-background: violet
-}
-*::-webkit-resizer  {
+
+/* #menu::-webkit-scrollbar-corner {
+    background: violet
+} */
+
+#menu::-webkit-resizer {
     background: #3c8dbc
 }
+
 /* 登录样式 */
+
 .layui-login {
     background: #fff;
-    border:1px solid rgb(210, 214, 214);
+    border: 1px solid rgb(210, 214, 214);
     border-radius: 5px;
     vertical-align: middle;
     padding: 10px 0;
     margin-top: 20rem;
 }
+
 .layui-login>input {
     margin-bottom: 10px;
 }
-.layui-login>form{
+
+.layui-login>form {
     padding: 20px;
 }
+
 .layui-login>form>input {
     margin-bottom: 10px;
 }
 
 /* 公用身体 */
 
-.section-con{
+.section-con {
     width: 100%;
-    height:calc(100% - 40px);
+    height: calc(100% - 40px);
     background: rgb(123, 131, 143);
+}
+
+#content {
+    position:relative;
     overflow: hidden;
-}
-#content{
     z-index: 9;
-    position: absolute;
-    left:225px;
-    width: calc(100% - 225px);
-    height: calc(100% - 53px);
+    margin-left: 220px;
+    height: 100%;
     background: rgba(123, 123, 123, 0.4);
-    border-left:1px solid #fff;
-    float: right;
+    border-left: 1px solid #fff;
 }
-#content>#iframe-content{
+
+#content>#iframe-content {
     width: 100%;
     height: 100%;
+}
+#content>#iframe-content html{
+    overflow: hidden;
+}
+.layui-table-tips-c {
+    line-height: 1;
+}
+
+/* 轮子的搜索框样式 */
+
+.searchCon .layui-input-inline {
+    line-height: 36px;
+}
+
+.searchCon .layui-input-inline>input {
+    line-height: 24px;
+    padding: 3px 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+/* 
+.searchCon .layui-input-inline>select {
+    display: inline-block;
+    height: 30px;
+    width: 8rem;
+    padding: 3px 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2)
+} */
+.searchCon .layui-form-switch{
+    width: 50px;
+}
+.searchCon .layui-form-switch i{
+    width: 20px;
+    height: 20px;
+    left:1px;top:0;
+}
+.searchCon .layui-form-onswitch i{
+    left:28px;
+}
+.searchCon .layui-form-label{
+    width: 110px;
+}
+.searchCon .layui-form-checkbox{
+    margin: 2px 0;
 }

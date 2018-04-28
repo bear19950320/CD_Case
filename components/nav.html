@@ -4,6 +4,7 @@
         width: 220px;
         height: 100%;
         float: left;
+        background: #e0e1e6;
     }
 
     #MeuNav-btn {
@@ -35,40 +36,82 @@
     #hideIcon>li {
         color: #fff;
         width: 100%;
-        height: 30px;
+        height: 45px;
         padding: 5px;
         font-size: 15px;
         text-align: center;
-        line-height: 30px;
+        line-height: 35px;
+    }
+
+    .layui-side-scroll>.layui-nav,
+    .layui-nav>.layui-nav-itemed>.layui-nav-child {
+        background: #e0e1e6 !important;
+    }
+
+    .layui-side-scroll>.layui-nav>.layui-nav-item {
+        margin: 1px 0;
+    }
+
+    .layui-nav .layui-nav-bor {
+        border-bottom: 1px solid #26a69a
+    }
+
+    .layui-side-scroll>.layui-nav a,
+    .layui-side-scroll>.layui-nav a i {
+        color: #555 !important;
+    }
+
+    .layui-side-scroll>.layui-nav a:hover {
+        background: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .layui-nav-tree .layui-this>a,
+    .layui-nav-tree .layui-this {
+        background: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .layui-nav-tree .layui-nav-child a {
+        padding-left: 15% !important;
+    }
+
+    .layui-nav-bar {
+        display: none !important;
     }
 </style>
 <link rel="stylesheet" type="text/css" href="./dist/layui/css/layui.css" />
-<button id="MeuNav-btn">
+<!-- 点击展示收缩菜单栏 -->
+<!-- <button id="MeuNav-btn">
     <i class="iconfont icon-caidan"></i>
-</button>
+</button> -->
 <div class="layui-side-scroll" style="top:0;bottom: 0">
     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
     <ul class="layui-nav layui-nav-tree" id="menu" lay-filter="test" style="height: 100%;width: 100%;">
-        <li class="layui-nav-item layui-nav-itemed">
-            <a class="" href="javascript:;">
-                <i class="layui-icon" style=" color: #1E9FFF;">&#xe68e;</i> 所有商品</a>
+        <li class="layui-nav-item layui-nav-itemed ">
+            <a class="layui-nav-bor" href="javascript:;">
+                <i class="iconfont icon-tuxing"></i> &nbsp;echarts</a>
             <dl class="layui-nav-child">
                 <dd>
-                    <a href="javascript:;" goUrl="pie">饼状图</a>
+                    <a href="javascript:;" goUrl="pie">
+                        <i class="iconfont icon-bingtu" ></i> &nbsp; 饼状图</a>
                 </dd>
                 <dd>
-                    <a href="javascript:;" goUrl="witerLine">水平面折线图</a>
+                    <a href="javascript:;" goUrl="witerLine"><i class="iconfont icon-nb-"></i> &nbsp;水平面折线图</a>
                 </dd>
                 <dd>
-                    <a href="javascript:;" goUrl="float">浮点数表</a>
+                    <a href="javascript:;" goUrl="float"><i class="iconfont icon-fudianshu"></i> &nbsp;浮点数表</a>
                 </dd>
                 <dd>
                     <a href="">超链接</a>
                 </dd>
             </dl>
         </li>
+
         <li class="layui-nav-item">
-            <a href="javascript:;">
+            <a href="javascript:;" goUrl="reloadForm">
+                <i class="iconfont icon-biaodan" ></i> &nbsp; 清空form表单的内容</a>
+        </li>
+        <li class="layui-nav-item ">
+            <a class="layui-nav-bor" href="javascript:;">
                 <i class="layui-icon" style="color: #1E9FFF;">&#xe68e;</i> 解决方案</a>
             <dl class="layui-nav-child">
                 <dd>
@@ -81,10 +124,6 @@
                     <a href="">超链接</a>
                 </dd>
             </dl>
-        </li>
-        <li class="layui-nav-item">
-            <a href="">
-                <i class="layui-icon" style=" color: #1E9FFF;">&#xe735;</i> 云市场</a>
         </li>
         <li class="layui-nav-item">
             <a href="">
@@ -101,11 +140,11 @@
     $(document).ready(function () {
         hideIcon();
     });
-    $("#menu a").each(function(){
-        $(this).click(function(){
-            if($(this).attr('goUrl')){
-                $("#iframe-content").attr("src",'./pages/'+$(this).attr('goUrl')+'/index.html')
-            }else{
+    $("#menu a").each(function () {
+        $(this).click(function () {
+            if ($(this).attr('goUrl')) {
+                $("#iframe-content").attr("src", './pages/' + $(this).attr('goUrl') + '/index.html')
+            } else {
                 return false;
             }
         })
@@ -125,13 +164,13 @@
         if (flag % 2 == 0) {
             $("#menu").show(); $("#hideIcon").hide();
             $("#MeuNav,#headLogo").animate({ "left": "0px" })
-            $("#content").animate({ width: $(window).width() - 225 + 'px', left: "225px" })
+            $("#content").animate({ left: "0px" })
             $("#headAdmin").animate({ "width": $(window).width() - 220 + 'px' })
         } else {
             $("#menu").hide(); $("#hideIcon").show();
             $("#MeuNav,#headLogo").animate({ "left": "-190px" })
-            $("#content").animate({ width: $(window).width() - 30 + 'px', left: "35px" })
-            $("#headAdmin").animate({ "width": $(window).width() - 60 + 'px' })
+            $("#headAdmin").animate({ "width": $(window).width() - 60 + 'px' });
+            $("#content").animate({ left: '-190px' })
         }
     })
 </script>

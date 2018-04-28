@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="../../dist/css/index.css">
 </head>
 
-<body class="layui-row" >
+<body class="layui-row" style="overflow-x: hidden;">
     <div class="layui-col-lg12">
         <!-- 身体  -->
         <section class="content" style="width: 100%;">
             <button class="layui-btn">表单</button>
+            <div id="searchCon"></div>
             <table id="demo" lay-filter="test"></table>
         </section>
     </div>
@@ -29,33 +30,40 @@
     <!-- 最新的layui的Js引用  -->
     <script src="../../dist/layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../dist/layui/lay/modules/layer.js"></script>
-
+    <script src="../../dist/js/common.js"></script>
     <!-- 调用JS的End -->
     <script>
-            layui.use('table', function(){
-              var table = layui.table;
-              
-              //第一个实例
-              table.render({
+        // 搜索框的轮子事件
+        var name= ['个人','活动','事件','年龄'];
+        var ids=['personal','activity','event','age']
+        var type=['input','select','input','input']
+        var valOption=['',["待审核","已通过","已拒绝"],"",""]
+        common.search($("#searchCon"),name,type,valOption,ids);
+
+        layui.use('table', function () {
+            var table = layui.table;
+            //第一个实例
+            table.render({
                 elem: '#demo'
-                ,height: '600px'
-                ,url: 'user.json' //数据接口
-                ,page: true //开启分页
-                ,cols: [[ //表头
-                  {field: 'id', title: 'ID', width:'8%', sort: true, fixed: 'left'}
-                  ,{field: 'username', title: '用户名', width:'8%'}
-                  ,{field: 'sex', title: '性别', width:'8%', sort: true}
-                  ,{field: 'city', title: '城市', width:'8%'} 
-                  ,{field: 'sign', title: '签名', width: '22%'}
-                  ,{field: 'experience', title: '积分', width: '8%', sort: true}
-                  ,{field: 'score', title: '评分', width: '8%', sort: true}
-                  ,{field: 'classify', title: '职业', width: '8%'}
-                  ,{field: 'wealth', title: '财富', width: '21%', sort: true}
+                , height: '600px'
+                ,width:$("#content").width()
+                , url: 'user.json' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    { field: 'id', title: 'ID', width: '8%', sort: true, fixed: 'left' }
+                    , { field: 'username', title: '用户名', width: '8%' }
+                    , { field: 'sex', title: '性别', width: '8%', sort: true }
+                    , { field: 'city', title: '城市', width: '8%' }
+                    , { field: 'sign', title: '签名', width: '22%' }
+                    , { field: 'experience', title: '积分', width: '8%', sort: true }
+                    , { field: 'score', title: '评分', width: '8%', sort: true }
+                    , { field: 'classify', title: '职业', width: '8%' }
+                    , { field: 'wealth', title: '财富', width: '21%', sort: true }
                 ]]
-              });
-              
             });
-            </script>
+
+        });
+    </script>
 </body>
 
 </html>

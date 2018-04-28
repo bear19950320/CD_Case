@@ -9,12 +9,12 @@
         position: absolute;
         text-align: center;
         color: #fff;
-        font-weight: 600;
+        font-weight: 800;
         line-height: 50px;
         font-size: 1.5rem;
         height: 50px;
         width: 220px;
-        background: #367fa9;
+        background: #2D5F8B;
         float: left;
     }
 
@@ -24,7 +24,7 @@
         line-height: 50px;
         float: right;
         padding-left: 50px;
-        background: #fff;
+        background: #2D5F8B;
         border-bottom: 1px solid rgba(0,0,0,0.25);
     }
 
@@ -47,13 +47,18 @@
         text-align: center;
         height: 50px;
         line-height: 50px;
+        color:#fff;
     }
-
+    .full-screen-btn-con>.full-screen-btn:hover{
+        background: rgba(0, 0, 0, 0.1);
+        color:#fff;
+    }
     #headAdmin>.headList {
         float: left;
         height: 50px;
         width: calc(100% - 250px)
     }
+    
 
     .full-admin {
         float: left;
@@ -66,7 +71,16 @@
         position: relative;
         text-align: left;
     }
-
+    #admin-btn>.layui-btn,.headList>.layui-btn{
+        height: 100%;
+        color: #fff;
+        background: #2D5F8B;
+        border:0;
+    }
+    .headList>.layui-btn:hover{
+        background: rgba(0, 0, 0, 0.1);
+        color:#fff;
+    }
     #admin-btn>ul {
         z-index: 999;
         display: none;
@@ -112,13 +126,18 @@
         background-size: 100% 100%;
         float: right;
     }
+    #nowTime{
+        color:#fff;
+        padding-right:20px; 
+    }
 </style>
 <!-- 导航条的logo提示 -->
-<span id="headLogo">人事信息管理</span>
+<span id="headLogo"><img src="http://sbc.scu.edu.cn/sfw_u/custom_logo/simple/scu.png" width="40" height="40" style="margin: 5px" alt=""> 人事信息管理</span>
 <!--  导航头部的admin展示栏  -->
 <div id="headAdmin">
     <div class="headList">
-        <button class="layui-btn layui-btn-primary">首页</button>
+        <button class="layui-btn layui-btn-primary" title="首页" onclick="pageOne()"><i class="iconfont icon-shouye"></i></button>
+        <a href="javascript:;" class="pull-right" id="nowTime"></a>
     </div>
     <div class="full-con">
         <div class="full-screen-btn-con">
@@ -153,6 +172,10 @@
     </div>
 </div>
 <script>
+    setInterval(function(){
+        $("#nowTime").html(time(new Date().Format("yyyy年MM月dd日 hh:mm:ss")));
+        $("#nowTime").attr('title',new Date().Format("yyyy年MM月dd日 hh:mm:ss"))
+    },1000)
     // 全屏点击
     var flag = 0;
     $('#winRow').click(function () {
@@ -206,5 +229,8 @@
             document.webkitExitFullscreen();
         }
     }
-
+    // 首页的跳转
+    var pageOne=function(){
+        $("#iframe-content").attr("src", './pages/index/index.html')
+    }
 </script>

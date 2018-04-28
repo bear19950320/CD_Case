@@ -16,19 +16,10 @@
     <div class="layui-col-lg12" style="height: 100%;">
         <!-- 身体  -->
         <section class="content" style="width: 100%;height: 100%;">
-            <!-- <select name="city" lay-verify="required">
-                <option value=""></option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-              </select> -->
-            <div id='searchCon'>
-
-            </div>
+            <div id='searchCon'></div>
             <div>
                 <button class="layui-btn" onclick="reloadForm()">点击重置</button>
+                <button class="layui-btn" onclick="submit()">点击提交</button>
             </div>
         </section>
     </div>
@@ -44,11 +35,12 @@
     <script src="../../dist/js/common.js"></script>
     <!-- 调用JS的End -->
     <script>
-        var name = ['个人', '活动', '事件', '年龄', "开关"];
-        var ids = ['personal', 'activity', 'event', 'age', "close"]
-        var type = ['input', 'select', 'input', 'input', 'switch']
-        var valOption = ['', ["待审核", "已通过", "已拒绝"], "", "", '开|关']
+        var name = ['个人', '活动', '事件', '年龄', "开关",'复选框'];
+        var ids = ['personal', 'activity', 'event', 'age', "close",'primaryBox']
+        var type = ['input', 'select', 'input', 'input', 'switch','primaryNew']
+        var valOption = ['', ["待审核", "已通过", "已拒绝"], "", "", '开|关',["看书","写作","篮球","看书","写作","篮球","写作","篮球"]]
         common.form($("#searchCon"), name, type, valOption, ids);
+       
         var form;
         layui.use('form', function () {
             form = layui.form;
@@ -58,6 +50,24 @@
         function reloadForm() {
             common.form($("#searchCon"), name, type, valOption, ids);
             form.render();
+        }
+        function submit() {
+            var formData=new FormData(document.getElementById("formCom"));
+            $.ajax({
+                url:'/extention/teacherInfoManager/getTime',
+                type: 'POST',
+                data: formData,
+                dataType: "JSON",
+                processData:false,
+                contentType:false,
+                success: function (data) {
+                    
+                    
+                },
+                error: function () {
+
+                }
+            });
         }
     </script>
 

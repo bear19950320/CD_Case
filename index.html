@@ -19,7 +19,7 @@
     <section class="section-con automatic" >
         <!-- 菜单栏 -->
         <aside id="MeuNav"></aside>
-        <!-- 内容栏 -->
+        <!-- 内容栏 --> 
         <div id="content">
             <iframe src="./pages/index/index.html" id="iframe-content" frameborder="0"></iframe>
         </div>
@@ -40,16 +40,13 @@
             var winHeight = $(window).height();
             $(".section-con").css({
                 height: winHeight - 50 + 'px'
-            })
+            });
         });
         $(window).resize(function () {
             var winHeight = $(window).height();
             $(".section-con,#content").css({
                 height: winHeight - 52 + 'px'
             });
-            // $("#content").css({
-            //     height: winHeight - 52 + 'px'
-            // });
         });
         $("#header").load('./components/head.html', function () {
             // $(this).css('color','red')
