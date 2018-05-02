@@ -48,9 +48,11 @@
         var login = function () {
             if (!$("#adminName").val()) {
                 layer.tips('用户名不能为空', '#adminName', { tips: [2, 'red'] });
+                $("#adminName").focus()
                 return;
             } else if (!$("#adminPassword").val()) {
                 layer.tips('密码不能为空', '#adminPassword', { tips: [2, 'red'] });
+                $("#adminPassword").focus()
                 return;
             } else {
                 layer.msg('登录中', {
@@ -64,6 +66,12 @@
                 sessionStorage.login = true;
             }
         }
+        // 密码框输入后 回车事件;
+        $("#adminPassword").keydown(function (e) {
+            if (e.keyCode == 13) {
+                login()
+            }
+        }); 
     </script>
 </body>
 

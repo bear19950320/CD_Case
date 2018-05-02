@@ -1,9 +1,169 @@
 /* layui的css */
+
 @import '../layui/css/layui.css';
 @import '../layui/css/modules/layer/default/layer.css';
 /* boot的主题css一般不引入 */
+
 /* @import 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'; */
+
 /* 最新版本的 Bootstrap 核心 CSS 文件 */
+
 @import 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css';
-/* 字体的css */
-@import '//at.alicdn.com/t/font_643306_kvnazbozdd1b57b9.css';
+/* 字体图标的css */
+
+@import '//at.alicdn.com/t/font_643306_xacdkjonbg7ujtt9.css';
+/* 首页 */
+
+.my-module>.module-div {
+    float: left;
+    width: 30%;
+    height: 20rem;
+    margin: 10px 1.5%;
+    padding: 10px;
+    padding-top: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+    border-radius: 5px;
+}
+
+.my-module>.module-div>h4 {
+    font-weight: 600;
+    width: 100%;
+}
+
+/* 我的工作 */
+
+.my-module>.module-div>.work-con {
+    width: 100%;
+    height: 16rem;
+    overflow: hidden;
+}
+
+.work-con>div {
+    float: left;
+    color: #fff;
+    line-height: 7rem;
+    text-align: center;
+    width: 24%;
+    height: 7rem;
+    margin: 0.5rem 4.6%;
+    border-radius: 50%;
+}
+
+/* 快捷导航 */
+
+.quick-nav {
+    white-space: nowrap !important;
+    overflow-x: scroll !important;
+    vertical-align: middle !important;
+    height: 16rem;
+}
+
+.quick-nav>li {
+    width: 24%;
+    display: inline-block;
+    letter-spacing: 2px;
+    height: 12rem;
+    margin: 1rem 0.5%;
+}
+
+.quick-nav>li>a {
+    display: inline-block;
+    width: 80%;
+    height: 8rem;
+    margin-left: 10%;
+    /* margin-top: 2rem; */
+}
+
+.quick-nav>li>a:hover>.pc-icon {
+    transform: translateY(-0.5rem);
+}
+
+.quick-nav>li>a>.pc-icon {
+    font-size: 6rem;
+}
+
+.quick-nav>li>a>span {
+    word-break: normal;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+    margin-top: 10px;
+    width: 100%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* 个人中心 */
+
+.personal-center {
+    width: 100%;
+    height: calc( 100% - 39px);
+}
+
+.personal-img {
+    width: 35%;
+    padding: 0.7rem 1rem;
+    height: 100%;
+    float: left;
+}
+
+.personal-img>img {
+    width: 100%;
+    height: 80%;
+    margin-top: 10%;
+}
+
+.personal-text {
+    margin-left: 35%;
+    height: 100%;
+    padding: 0.4rem 1rem;
+    padding-right: 0;
+}
+
+.personal-text>ul {
+    margin-top: 5%;
+}
+
+.personal-text>ul>li {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 2px 0;
+}
+
+/* 通知公告  */
+
+.bulletin {
+    width: 96%;
+    min-height: 100px;
+    margin: 10px 1.5%;
+    margin-right: 1.6%;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.bulletin>h4 {
+    font-weight: 600;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.bulletin>h4>.pull-right {
+    margin-right: 10px;
+    padding-left: 10px;
+    font-weight: 100;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.not-sms {
+    width: 100%;
+    text-align: center;
+    line-height: 1.5rem;
+    font-size: 1rem;
+}

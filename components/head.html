@@ -25,7 +25,7 @@
         float: right;
         padding-left: 50px;
         background: #2D5F8B;
-        border-bottom: 1px solid rgba(0,0,0,0.25);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     }
 
     .full-con {
@@ -47,18 +47,20 @@
         text-align: center;
         height: 50px;
         line-height: 50px;
-        color:#fff;
+        color: #fff;
     }
-    .full-screen-btn-con>.full-screen-btn:hover{
+
+    .full-screen-btn-con>.full-screen-btn:hover {
         background: rgba(0, 0, 0, 0.1);
-        color:#fff;
+        color: #fff;
     }
+
     #headAdmin>.headList {
         float: left;
         height: 50px;
         width: calc(100% - 250px)
     }
-    
+
 
     .full-admin {
         float: left;
@@ -71,16 +73,20 @@
         position: relative;
         text-align: left;
     }
-    #admin-btn>.layui-btn,.headList>.layui-btn{
+
+    #admin-btn>.layui-btn,
+    .headList>.layui-btn {
         height: 100%;
         color: #fff;
         background: #2D5F8B;
-        border:0;
+        border: 0;
     }
-    .headList>.layui-btn:hover{
+
+    .headList>.layui-btn:hover {
         background: rgba(0, 0, 0, 0.1);
-        color:#fff;
+        color: #fff;
     }
+
     #admin-btn>ul {
         z-index: 999;
         display: none;
@@ -126,17 +132,21 @@
         background-size: 100% 100%;
         float: right;
     }
-    #nowTime{
-        color:#fff;
-        padding-right:20px; 
+
+    #nowTime {
+        color: #fff !important;
+        padding-right: 20px;
     }
 </style>
 <!-- 导航条的logo提示 -->
-<span id="headLogo"><img src="http://sbc.scu.edu.cn/sfw_u/custom_logo/simple/scu.png" width="40" height="40" style="margin: 5px" alt=""> 人事信息管理</span>
+<span id="headLogo">
+    <img src="http://sbc.scu.edu.cn/sfw_u/custom_logo/simple/scu.png" width="40" height="40" style="margin: 5px" alt=""> 人事信息管理</span>
 <!--  导航头部的admin展示栏  -->
 <div id="headAdmin">
     <div class="headList">
-        <button class="layui-btn layui-btn-primary" title="首页" onclick="pageOne()"><i class="iconfont icon-shouye"></i></button>
+        <button class="layui-btn layui-btn-primary" title="首页" onclick="pageOne()">
+            <i class="iconfont icon-shouye"></i>
+        </button>
         <a href="javascript:;" class="pull-right" id="nowTime"></a>
     </div>
     <div class="full-con">
@@ -172,10 +182,13 @@
     </div>
 </div>
 <script>
-    setInterval(function(){
-        $("#nowTime").html(time(new Date().Format("yyyy年MM月dd日 hh:mm:ss")));
-        $("#nowTime").attr('title',new Date().Format("yyyy年MM月dd日 hh:mm:ss"))
-    },1000)
+    $(document).ready(function () {
+        $("#nowTime").html(new Date().Format("yyyy年MM月dd日 hh:mm:ss"));
+    });
+    setInterval(function () {
+        $("#nowTime").html(new Date().Format("yyyy年MM月dd日 hh:mm:ss"));
+        $("#nowTime").attr('title', new Date().Format("yyyy年MM月dd日 hh:mm:ss"))
+    }, 1000);
     // 全屏点击
     var flag = 0;
     $('#winRow').click(function () {
@@ -230,7 +243,27 @@
         }
     }
     // 首页的跳转
-    var pageOne=function(){
+    var pageOne = function () {
         $("#iframe-content").attr("src", './pages/index/index.html')
+    }
+    /**
+     * 转为年月日格式的函数
+     * 调用方法 new Date().Format("yyyy-MM-dd hh:mm:ss") PS:(除了单词外其他都可以改)
+     */
+    Date.prototype.Format = function (fmt) { // author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, // 月份
+            "d+": this.getDate(), // 日
+            "h+": this.getHours(), // 小时
+            "m+": this.getMinutes(), // 分
+            "s+": this.getSeconds(), // 秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+            "S": this.getMilliseconds() // 毫秒
+        };
+        if (/(y+)/.test(fmt))
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
     }
 </script>

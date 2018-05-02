@@ -92,13 +92,16 @@
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;" goUrl="pie">
-                        <i class="iconfont icon-bingtu" ></i> &nbsp; 饼状图</a>
+                        <i class="iconfont icon-bingtu"></i> &nbsp; <span>饼状图</span>
+                    </a>
                 </dd>
                 <dd>
-                    <a href="javascript:;" goUrl="witerLine"><i class="iconfont icon-nb-"></i> &nbsp;水平面折线图</a>
+                    <a href="javascript:;" goUrl="witerLine">
+                        <i class="iconfont icon-nb-"></i> &nbsp;<span>水平面折线图</span></a>
                 </dd>
                 <dd>
-                    <a href="javascript:;" goUrl="float"><i class="iconfont icon-fudianshu"></i> &nbsp;浮点数表</a>
+                    <a href="javascript:;" goUrl="float">
+                        <i class="iconfont icon-fudianshu"></i> &nbsp;<span>浮点数表</span></a>
                 </dd>
                 <dd>
                     <a href="">超链接</a>
@@ -108,7 +111,7 @@
 
         <li class="layui-nav-item">
             <a href="javascript:;" goUrl="reloadForm">
-                <i class="iconfont icon-biaodan" ></i> &nbsp; 清空form表单的内容</a>
+                <i class="iconfont icon-biaodan"></i> &nbsp; 清空form表单的内容</a>
         </li>
         <li class="layui-nav-item ">
             <a class="layui-nav-bor" href="javascript:;">
@@ -140,9 +143,12 @@
     $(document).ready(function () {
         hideIcon();
     });
-    $("#menu a").each(function () {
+    $("#menu a").each(function (i) {
         $(this).click(function () {
             if ($(this).attr('goUrl')) {
+                // 控制浏览器的head下的title
+                document.title=$(this).text();
+                // iframe加载页面
                 $("#iframe-content").attr("src", './pages/' + $(this).attr('goUrl') + '/index.html')
             } else {
                 return false;
