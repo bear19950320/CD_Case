@@ -86,7 +86,42 @@
 <div class="layui-side-scroll" style="top:0;bottom: 0">
     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
     <ul class="layui-nav layui-nav-tree" id="menu" lay-filter="test" style="height: 100%;width: 100%;">
-        <li class="layui-nav-item layui-nav-itemed ">
+        <li class="layui-nav-item">
+            <a href="./pages/basic/index.html#basic" target="left" goName='basic' goUrl='basic'>
+                <i class="iconfont icon-yduibianxie"></i> &nbsp;当前业务</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="./pages/basic/index.html#wang" target="left" goName='wang' goUrl='basic'>
+                <i class="iconfont icon-jianbao"></i> &nbsp;常用业务</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="./pages/basic/index.html#main" target="left" goName='main' goUrl='basic'>
+                <i class="iconfont icon-solid-person"></i> &nbsp;个人信息</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;" goUrl='basic' name="reloadForm">
+                <i class="iconfont icon-xitongshezhi"></i> &nbsp;系统管理</a>
+        </li>
+        <li class="layui-nav-item ">
+            <a class="layui-nav-bor" href="javascript:;">
+                <i class="iconfont icon-shuju"></i> &nbsp;数据填报审核</a>
+            <dl class="layui-nav-child">
+                <dd>
+                    <a href="javascript:;" goUrl="audit/loadAudit">
+                        <i class="iconfont icon-daishenhe"></i> &nbsp; <span>待审核数据填报</span>
+                    </a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" goUrl="audit/endAudit">
+                        <i class="iconfont icon-xiaofeiyewuyishenhe"></i> &nbsp;<span>已审核数据填报</span></a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" goUrl="audit/tableAudit">
+                        <i class="iconfont icon-data"></i> &nbsp;<span>数据填报统计</span></a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
             <a class="layui-nav-bor" href="javascript:;">
                 <i class="iconfont icon-tuxing"></i> &nbsp;echarts</a>
             <dl class="layui-nav-child">
@@ -149,7 +184,7 @@
                 // 控制浏览器的head下的title
                 document.title=$(this).text();
                 // iframe加载页面
-                $("#iframe-content").attr("src", './pages/' + $(this).attr('goUrl') + '/index.html')
+                $("#iframe-content").attr("src", './pages/' + $(this).attr('goUrl') + '/index.html');
             } else {
                 return false;
             }

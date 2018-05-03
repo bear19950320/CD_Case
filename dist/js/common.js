@@ -22,24 +22,26 @@ var common = {
                     } else if (objLength == 4) {
                         html += '<div class="layui-col-lg3 layui-col-sm3 layui-col-md3">';
                     }
-                    html += '<label class="layui-form-label">' + nameArr[i] + ' :</label>';
+                    html += '<label class="layui-form-label">' + nameArr[i] + ' </label>';
                     html += '<div class="layui-input-inline">';
                     $type = type[i];
                     switch ($type) {
                         /*如果这是input框
                         */
                         case 'input': {
-                            html += '<input type="text" id="' + id[i] + '" title="' + nameArr[i] + '" />'
+                            html += ': <input type="text" id="' + id[i] + '" title="' + nameArr[i] + '" />';
                             break;
                         }
                         /*如果这是select框
                         **/
                         case 'select': {
-                            html += '<select class="form-control" id="' + id[i] + '"  title="' + nameArr[i] + '">'
+                            html += ': <select class="form-control" id="' + id[i] + '"  title="' + nameArr[i] + '">'
                             html += '<option value="0">全部</option>';
                             html += option(valOption[i]);
-                            html += '</select>'
+                            html += '</select>';
+                            break;
                         }
+                       
                     }
                     html += '</div></div>'
                 }
@@ -71,7 +73,7 @@ var common = {
                     } else {
                         html += '<div class="layui-col-lg6 layui-col-sm6 layui-col-md6">';
                     }
-                    html += '<label class="layui-form-label">' + nameArr[i] + ' :</label>';
+                    html += '<label class="layui-form-label">' + nameArr[i] + ' </label>';
                     if (valOption[i].length >= 4) {
                         html += '<div class="layui-input-block">';
                     } else {
@@ -82,24 +84,25 @@ var common = {
                         /*如果这是input框
                         */
                         case 'input': {
-                            html += '<input type="text" id="' + id[i] + '"  name="' + id[i] + '" title="' + nameArr[i] + '" />'
+                            html += ': <input type="text" id="' + id[i] + '"  name="' + id[i] + '" title="' + nameArr[i] + '" />'
                             break;
                         }
                         /*如果这是select框
                         **/
                         case 'select': {
-                            html += '<select class="form-control" id="' + id[i] + '"  name="' + id[i] + '"  title="' + nameArr[i] + '">'
+                            html += ' <select class="form-control" id="' + id[i] + '"  name="' + id[i] + '"  title="' + nameArr[i] + '">'
                             html += '<option value="0">全部</option>';
                             html += option(valOption[i]);
                             html += '</select>';
                             break;
                         }
                         case 'switch': {
-                            html += '<input type="checkbox" id="' + id[i] + '"  name="' + id[i] + '" title="' + nameArr[i] + '" lay-skin="switch" lay-text="' + valOption[i] + '" />'
+                            html += ': <input type="checkbox" id="' + id[i] + '"  name="' + id[i] + '" title="' + nameArr[i] + '" lay-skin="switch" lay-text="' + valOption[i] + '" />'
                             break;
                         }
                         case 'primaryNew': {
-                            html += '<div style="display:block;">' + primaryNew(valOption[i]) + '</div>';
+                            html += ': <div style="display:block;">' + primaryNew(valOption[i]) + '</div>';
+                            break;
                         }
                     }
                     html += '</div></div>'

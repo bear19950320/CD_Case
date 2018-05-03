@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>已审核数据填报</title>
+    <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
+
+    <!-- 引用的公用CSS样式 -->
+    <link rel="stylesheet" href="../../../dist/css/styleAll.css">
+    <link rel="stylesheet" href="../../../dist/css/index.css">
+    <style>
+        h3{
+            width: 100%;
+            padding: 0 2rem;
+        }
+        #searchCon{
+            padding-top: 1rem;
+        }
+        .layui-form-label{
+            width: 7.15rem;
+            float: left;
+        }
+        .layui-input-inline{
+            margin-left: 8rem;
+            display: block;
+        }
+        
+        .layui-input-inline .layui-date{
+            width: 7rem;
+            float: left;
+        }
+        .layui-padding{
+            padding: 1rem;
+            border-top:1px solid #e5e5e5;
+            border-bottom:1px solid #e5e5e5;
+        }
+    </style>
+</head>
+<body class="layui-row" style="overflow-x: hidden;">
+    <div class="layui-col-lg12" style="height: 100%;">
+        <!-- 身体  -->
+        <section class="content" style="width: 100%;height: 100%;">
+            <h3><i class="iconfont icon-xiaofeiyewuyishenhe"></i> 已审核数据填报</h3>
+            <div id='searchCon' class="layui-row layui-padding">
+                <form  class="layui-col-lg8 layui-col-md8 layui-col-sm9 layui-row layui-form" id='formCom'>
+                    <div class="layui-col-lg3 layui-col-md3 layui-col-sm3">
+                        <label class="layui-form-label" for="">实例名称 :</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input layui-text" name="caseName" type="text" id='caseName'>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg3 layui-col-md3 layui-col-sm3">
+                        <label class="layui-form-label" for="">业务状况 :</label>
+                        <div class="layui-input-inline">
+                            <select class="selectBox" name="serviceStatus" id="serviceStatus" >
+                                <option value="0">全部</option>
+                                <option value="1">待审</option>
+                                <option value="2">已审</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg5 layui-col-md6 layui-col-sm6">
+                        <label class="layui-form-label" for="">提交时间 :</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="upDate1" class="layui-input layui-date" id="upDate1"> <span style="float: left;line-height: 2.7rem;padding: 0 0.2rem;">至</span> <input  name="upDate2" type="text" class="layui-input layui-date" id="upDate2">
+                        </div>
+                    </div>
+                </form>
+                <div class="layui-col-lg2 layui-col-md2 layui-col-sm2">
+                    <button class="layui-btn pull-left" onclick="submit()">查询</button>
+                    <button class="layui-btn pull-left" onclick="reloadForm()">清除</button>
+                </div>
+            </div>
+            <div class="layui-row layui-padding">
+                <div class="pull-right" style="margin-right: 2rem;">
+                    <a href="javascript:;"><i class="iconfont icon-gou"></i> 查看流程</a>
+                </div>
+            </div>
+            <table id="demo" lay-filter="test"></table>
+        </section>
+    </div>
+    <!-- 调用JS的Start -->
+    <script src="../../../dist/js/jquery.min.js"></script>
+   
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 最新的layui的Js引用  -->
+    <script src="../../../dist/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../../../dist/layui/lay/modules/laydate.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../../dist/layui/lay/modules/layer.js"></script>
+    <script src="../../../dist/js/common.js"></script>
+    <!-- 调用JS的End -->
+    <script type="text/html" id="operation">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script>
+        var name = ['实例名称', '业务状况', '提交时间',''];
+        var ids = [' caseName', 'serviceStatus', 'upTime','operation']
+        var type = ['input', 'select', 'oldDate','operation']
+        var valOption = ['', ["待审核", "已通过", "已拒绝"], "",'']
+        common.form($("#searchCons"), name, type, valOption, ids);
+        var form;
+        layui.use(['form','laydate'], function () {
+            form = layui.form;
+            var laydate = layui.laydate;
+            
+            form.render();
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#upDate1',//指定元素
+                done: function(value, date, endDate){
+                    laydate.render({
+                        elem: '#upDate2',//指定元素
+                        min : value
+                    });
+                }
+            });
+           
+        });
+        //  如果要置空重新填写
+        function reloadForm() {
+            console.log(form.render)
+            form.render();
+        }
+        function submit() {
+            var formData=new FormData(document.getElementById("formCom"));
+            $.ajax({
+                url:'/extention/teacherInfoManager/getTime',
+                type: 'POST',
+                data: formData,
+                dataType: "JSON",
+                processData:false,
+                contentType:false,
+                success: function (data) {
+                    
+                    
+                },
+                error: function () {
+
+                }
+            });
+        }
+
+        layui.use('table', function () {
+            var table = layui.table;
+            //第一个实例
+            table.render({
+                elem: '#demo'
+                , height: '600px'
+                ,width:$("#content").width()
+                , url: '../user.json' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    { field: 'id', title: 'ID', width: '8%', sort: true, fixed: 'left' }
+                    , { field: 'username', title: '用户名', width: '8%' }
+                    , { field: 'sex', title: '性别', width: '8%', sort: true }
+                    , { field: 'city', title: '城市', width: '8%' }
+                    , { field: 'sign', title: '签名', width: '22%' }
+                    , { field: 'experience', title: '积分', width: '8%', sort: true }
+                    , { field: 'score', title: '评分', width: '8%', sort: true }
+                    , { field: '', title: '操作', width: '21%', toolbar: '#operation' }
+                ]]
+            });
+
+            table.render()
+
+        });
+    </script>
+
+</body>
+
+</html>
