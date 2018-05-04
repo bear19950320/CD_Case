@@ -4,7 +4,7 @@
         width: 220px;
         height: 100%;
         float: left;
-        background: #e0e1e6;
+        background: #393D49;
     }
 
     #MeuNav-btn {
@@ -45,37 +45,75 @@
 
     .layui-side-scroll>.layui-nav,
     .layui-nav>.layui-nav-itemed>.layui-nav-child {
-        background: #e0e1e6 !important;
+        background: #393D49 !important;
     }
 
     .layui-side-scroll>.layui-nav>.layui-nav-item {
         margin: 1px 0;
     }
 
-    .layui-nav .layui-nav-bor {
-        border-bottom: 1px solid #26a69a
-    }
-
     .layui-side-scroll>.layui-nav a,
     .layui-side-scroll>.layui-nav a i {
-        color: #555 !important;
+        color: #BFC0C2 !important;
     }
 
     .layui-side-scroll>.layui-nav a:hover {
-        background: rgba(0, 0, 0, 0.1) !important;
+        background: rgba(78, 84, 101, 1) !important;
+        color: #fff !important;
     }
 
     .layui-nav-tree .layui-this>a,
     .layui-nav-tree .layui-this {
-        background: rgba(0, 0, 0, 0.1) !important;
+        background: #009688 !important;
+        color: #fff !important;
+    }
+
+    .layui-side-scroll>.layui-nav .layui-this a:hover {
+        background: #009688 !important;
+        color: #fff !important;
     }
 
     .layui-nav-tree .layui-nav-child a {
         padding-left: 15% !important;
     }
 
-    .layui-nav-bar {
-        display: none !important;
+    .layui-nav-itemed>a {
+        border-left: 5px solid #009688;
+    }
+
+    .admin-item {
+        width: 100%;
+        padding: 0.5rem 10%;
+        /* padding-bottom: 0; */
+        border-bottom: #009688 1px solid;
+    }
+
+    .admin-item>img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        float: left;
+    }
+
+    .admin-name {
+        margin-left: 5rem;
+    }
+
+    .admin-name>div {
+        /* text-align: center; */
+        line-height: 19px;
+        margin: 3px 0;
+    }
+
+    .admin-name>div>p {
+        font-size: 1rem;
+        line-height: 1.4rem;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 </style>
 <link rel="stylesheet" type="text/css" href="./dist/layui/css/layui.css" />
@@ -86,20 +124,31 @@
 <div class="layui-side-scroll" style="top:0;bottom: 0">
     <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
     <ul class="layui-nav layui-nav-tree" id="menu" lay-filter="test" style="height: 100%;width: 100%;">
+        <div class="admin-item automatic">
+            <img src="http://ww3.sinaimg.cn/bmiddle/9d5ef2bbgy1fqomok0vp2j20b40b4jth.jpg" alt="">
+            <div class="admin-name">
+                <div>
+                    <b>admin</b>
+                </div>
+                <div>
+                    <p id="admin-col">人事单位</p>
+                </div>
+            </div>
+        </div>
         <li class="layui-nav-item">
-            <a href="./pages/basic/index.html#basic" target="left" goName='basic' goUrl='basic'>
+            <a href="javascript:;" class="anchors" target="right" goName='now-business' goUrl='basic'>
                 <i class="iconfont icon-yduibianxie"></i> &nbsp;当前业务</a>
         </li>
         <li class="layui-nav-item">
-            <a href="./pages/basic/index.html#wang" target="left" goName='wang' goUrl='basic'>
+            <a href="javascript:;" class="anchors" target="right" goName='com-business' goUrl='basic'>
                 <i class="iconfont icon-jianbao"></i> &nbsp;常用业务</a>
         </li>
         <li class="layui-nav-item">
-            <a href="./pages/basic/index.html#main" target="left" goName='main' goUrl='basic'>
+            <a href="javascript:;" class="anchors" target="right" goName='my-information' goUrl='basic'>
                 <i class="iconfont icon-solid-person"></i> &nbsp;个人信息</a>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;" goUrl='basic' name="reloadForm">
+            <a href="javascript:;" class="anchors" target="right" goName='system-case' goUrl='basic'>
                 <i class="iconfont icon-xitongshezhi"></i> &nbsp;系统管理</a>
         </li>
         <li class="layui-nav-item ">
@@ -108,16 +157,21 @@
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;" goUrl="audit/loadAudit">
-                        <i class="iconfont icon-daishenhe"></i> &nbsp; <span>待审核数据填报</span>
+                        <i class="iconfont icon-daishenhe"></i> &nbsp;
+                        <span>待审核数据填报</span>
                     </a>
                 </dd>
                 <dd>
                     <a href="javascript:;" goUrl="audit/endAudit">
-                        <i class="iconfont icon-xiaofeiyewuyishenhe"></i> &nbsp;<span>已审核数据填报</span></a>
+                        <i class="iconfont icon-xiaofeiyewuyishenhe"></i> &nbsp;
+                        <span>已审核数据填报</span>
+                    </a>
                 </dd>
                 <dd>
                     <a href="javascript:;" goUrl="audit/tableAudit">
-                        <i class="iconfont icon-data"></i> &nbsp;<span>数据填报统计</span></a>
+                        <i class="iconfont icon-data"></i> &nbsp;
+                        <span>数据填报统计</span>
+                    </a>
                 </dd>
             </dl>
         </li>
@@ -127,16 +181,21 @@
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;" goUrl="pie">
-                        <i class="iconfont icon-bingtu"></i> &nbsp; <span>饼状图</span>
+                        <i class="iconfont icon-bingtu"></i> &nbsp;
+                        <span>饼状图</span>
                     </a>
                 </dd>
                 <dd>
                     <a href="javascript:;" goUrl="witerLine">
-                        <i class="iconfont icon-nb-"></i> &nbsp;<span>水平面折线图</span></a>
+                        <i class="iconfont icon-nb-"></i> &nbsp;
+                        <span>水平面折线图</span>
+                    </a>
                 </dd>
                 <dd>
                     <a href="javascript:;" goUrl="float">
-                        <i class="iconfont icon-fudianshu"></i> &nbsp;<span>浮点数表</span></a>
+                        <i class="iconfont icon-fudianshu"></i> &nbsp;
+                        <span>浮点数表</span>
+                    </a>
                 </dd>
                 <dd>
                     <a href="">超链接</a>
@@ -182,9 +241,19 @@
         $(this).click(function () {
             if ($(this).attr('goUrl')) {
                 // 控制浏览器的head下的title
-                document.title=$(this).text();
+                document.title = $(this).text();
+                // 锚点控制
+                if ($(this).hasClass('anchors')) {
+                    var array = $("#iframe-content").attr("src").split("/");
+                    var basic = array[array.length - 2];
+                    if (basic == 'basic') {
+                        // 如果这里的倒数第二个文件为basic时就停止继续往下
+                        return;
+                    }
+                }
                 // iframe加载页面
                 $("#iframe-content").attr("src", './pages/' + $(this).attr('goUrl') + '/index.html');
+
             } else {
                 return false;
             }
@@ -213,5 +282,15 @@
             $("#headAdmin").animate({ "width": $(window).width() - 60 + 'px' });
             $("#content").animate({ left: '-190px' })
         }
+    });
+    var falgs = 0;
+    $("#admin-col").mouseover(function () {
+        falgs++;
+        if (falgs == 1) {
+            layer.tips($(this).text(), $(this), { tips: [2, 'red'] })
+        } else {
+            setTimeout(function () { falgs = 0 }, 2000);
+        }
+
     })
 </script>
