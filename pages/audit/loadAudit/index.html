@@ -95,8 +95,8 @@
     <!-- 调用JS的End -->
     <script type="text/html" id="operation">
         <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">审核</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">终止</a>
     </script>
     <script>
         var name = ['实例名称', '业务状况', '提交时间',''];
@@ -156,6 +156,7 @@
                 , url: '../user.json' //数据接口
                 , page: true //开启分页
                 , cols: [[ //表头
+                    {type:'numbers'},
                     { field: 'id', title: 'ID', width: '8%', sort: true, fixed: 'left' }
                     , { field: 'username', title: '用户名', width: '8%' }
                     , { field: 'sex', title: '性别', width: '8%', sort: true }
@@ -165,6 +166,7 @@
                     , { field: 'score', title: '评分', width: '8%', sort: true }
                     , { field: '', title: '操作', width: '21%', toolbar: '#operation' }
                 ]]
+                ,limit: 10
             });
 
             table.render()

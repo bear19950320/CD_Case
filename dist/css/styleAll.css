@@ -12,30 +12,54 @@ a, p, span, h1, h2, h3, h4, h5 {
 }
 
 a {
-    color:#555 !important;
+    color: #555 !important;
     text-decoration: none !important;
 }
 
 ol, ul {
     list-style: none;
 }
+
 @media screen and (max-width: 1170px) {
     html, body {
         height: 100%;
         overflow: auto;
         font-size: 10px !important;
     }
-    .module-div>.work-con>div{
-        height: 5rem ;
+    .module-div>.work-con>div {
+        height: 5rem;
         line-height: 5rem;
     }
-    .quick-nav>li>a{
+    .quick-nav>li>a {
         margin-top: 2.5rem;
     }
-    .my-module>.module-div>.work-con{
+    .my-module>.module-div>.work-con {
         padding-top: 1rem;
     }
 }
+
+@media screen and (max-width: 1240px) {
+    html, body {
+        height: 100%;
+        overflow: auto;
+        font-size: 10px !important;
+    }
+    .module-div>.work-con>div {
+        height: 5rem;
+        line-height: 5rem;
+    }
+    .quick-nav>li>a {
+        margin-top: 2.5rem;
+    }
+    .my-module>.module-div>.work-con {
+        padding-top: 1rem;
+    }
+    .basic-text>h4{
+        font-size: 0.8rem;
+    }
+}
+
+
 @media screen and (min-width: 1170px) {
     html, body {
         min-width: 1170px !important;
@@ -43,22 +67,26 @@ ol, ul {
         overflow: auto;
         font-size: 14px !important;
     }
-    .quick-nav>li>a{
+    .quick-nav>li>a {
         margin-top: 2rem;
     }
 }
+
 /* 头部导航条 */
-.nav-title{
+
+.nav-title {
     width: 100%;
     height: 40px;
     margin-bottom: 10px;
     background: red;
 }
-#nav-title{
+
+#nav-title {
     width: 100%;
     height: 40px;
 }
-#nav-title>li{
+
+#nav-title>li {
     float: left;
     cursor: pointer;
     text-align: center;
@@ -68,13 +96,17 @@ ol, ul {
     background: chartreuse;
     margin: 0 10px;
 }
-#nav-title>li>i:hover{
-    color:red;
+
+#nav-title>li>i:hover {
+    color: red;
 }
+
 /* 主页的iframe */
-#iframe-content html,#iframe-content body{
+
+#iframe-content html, #iframe-content body {
     width: 100% !important;
 }
+
 .automatic::after {
     display: block;
     content: "";
@@ -96,6 +128,7 @@ ol, ul {
 #menu::-webkit-scrollbar-track-piece {
     background: rgb(123, 131, 143);
 }
+
 #menu::-webkit-scrollbar-thumb {
     background: #c5ced0;
     border-radius: 5px;
@@ -143,7 +176,7 @@ ol, ul {
 }
 
 #content {
-    position:relative;
+    position: relative;
     overflow: hidden;
     z-index: 9;
     margin-left: 220px;
@@ -156,14 +189,17 @@ ol, ul {
     width: 100%;
     height: 100%;
 }
-#content>#iframe-content html{
+
+#content>#iframe-content html {
     overflow: hidden;
 }
+
 .layui-table-tips-c {
     line-height: 1;
 }
 
 /* 轮子的搜索框样式 */
+
 .searchCon .layui-input-inline {
     line-height: 36px;
 }
@@ -175,29 +211,183 @@ ol, ul {
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.2)
 }
-.searchCon .layui-form-switch{
+
+.searchCon .layui-form-switch {
     width: 50px;
 }
-.searchCon .layui-form-switch i{
+
+.searchCon .layui-form-switch i {
     width: 20px;
     height: 20px;
-    left:1px;top:0;
+    left: 1px;
+    top: 0;
 }
-.searchCon .layui-form-onswitch i{
-    left:28px;
+
+.searchCon .layui-form-onswitch i {
+    left: 28px;
 }
-.searchCon .layui-form-label{
+
+.searchCon .layui-form-label {
     width: 110px;
 }
-.searchCon .layui-form-checkbox{
+
+.searchCon .layui-form-checkbox {
     margin: 2px 0;
 }
+
 /* 半圆  */
-.icon-object{
+
+.icon-object {
     width: 100%;
     height: 100%;
     border-width: 3px;
     border-style: solid;
-    border-color:red;
+    border-color: red;
     border-radius: 50%;
 }
+
+/* -------------------个人基本信息start------------ */
+
+.basic>.layui-tab-brief>.layui-tab-title .layui-this:after {
+    border: 0 !important;
+    border-color: #E6E6E6 !important;
+}
+
+.basic>.layui-tab-brief>.layui-tab-title, .basic>.layui-tab-brief>.layui-tab-title>li {
+    height: 40px !important;
+}
+
+.basic>.layui-tab-brief>.layui-tab-title>li {
+    line-height: initial !important;
+}
+
+.basic>.layui-tab-brief>.layui-tab-title>li>a {
+    height: 30px;
+    padding: 0 1rem;
+    line-height: 30px;
+}
+
+.basic>.layui-tab-brief>.layui-tab-title>li>a>i {
+    width: 1px;
+    height: 1rem;
+    display: inline-block;
+    background: #d0cece;
+    margin-left: 1rem;
+}
+
+/* 选项卡未点击 */
+
+.basic>.layui-tab-brief>.layui-tab-title>li>a>span {
+    position: relative;
+    border-radius: 5px;
+    color: #666;
+    padding: 0 0.5rem;
+    line-height: 30px;
+}
+
+.basic>.layui-tab-brief>.layui-tab-title>li>a>span>.iconfont {
+    display: none;
+}
+
+/* 选项卡点击 */
+
+.basic>.layui-tab-brief>.layui-tab-title>.layui-this>a>span {
+    position: relative;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0 0.5rem;
+    line-height: 30px;
+    background: #E55227 !important;
+}
+
+.basic>.layui-tab-brief>.layui-tab-title>.layui-this>a>span>.iconfont {
+    position: absolute;
+    display: block;
+    bottom: -15px;
+    color: #E55227;
+    left: 45%;
+}
+
+/* 个人基本信息的 basic-ul */
+.basic .layui-tab-content .layui-tab-item{
+    min-height: 13rem;
+}
+.basic-title{
+    width: 100%;
+    padding: 0 2rem;
+    background: #E6E6E6;
+}
+.basic-title>a>h3{
+    margin: 0.8rem 0 ;
+}
+.basic-title>a>h3>i{
+    color:#E55227;
+    font-size: 1.5rem;
+}
+.basic-ul {
+    width: 100%;
+}
+.basic-ul>li {
+    cursor: pointer;
+    position: relative;
+    float: left;
+    width: 20%;
+    margin: 1rem 2.5%;
+    padding: 1rem 0.3rem 1rem 0.8rem;
+    border: 1px solid rgba(0, 0, 0, 0.3)
+}
+/* .basic-ul>li:hover{
+    transform: translateY(-0.5rem);
+    animation: 1s initial;
+} */
+
+.basic-ul>li>.icon-img-span {
+    float: left;
+}
+
+.basic-ul>li>.icon-img-span>.icon-img {
+    font-size: 6.5rem;
+    background: #555;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+.basic-ul>li>.basic-text {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    margin-top: 1rem;
+    margin-left: 8rem;
+    height: 8rem;
+}
+
+.basic-ul>li>.basic-text>h4{
+    font-weight: 600;
+}
+
+.basic-ul>li>.basic-text>h4, .basic-ul>li>.basic-text>p {
+    display: block;
+}
+
+.basic-ul>li>.basic-text>p {
+    margin-top: 5px;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.basic-ul>li>.icon-right-top{
+    position: absolute;
+    top:0;right: 0;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    padding: 0 0.1rem;
+}
+
+.basic-ul>li>.icon-right-top>.iconfont{
+    color:#fff;
+}
+/* -------------------个人基本信息end------------ */
