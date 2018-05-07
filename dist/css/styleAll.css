@@ -12,7 +12,7 @@ a, p, span, h1, h2, h3, h4, h5 {
 }
 
 a {
-    color: #555 !important;
+    color: #555 ;
     text-decoration: none !important;
 }
 
@@ -200,6 +200,10 @@ ol, ul {
 
 /* 轮子的搜索框样式 */
 
+.formInput{
+    margin-top: 1rem;
+    height: 43px;
+}
 .searchCon .layui-input-inline {
     line-height: 36px;
 }
@@ -228,7 +232,7 @@ ol, ul {
 }
 
 .searchCon .layui-form-label {
-    width: 110px;
+    width: 10rem;
 }
 
 .searchCon .layui-form-checkbox {

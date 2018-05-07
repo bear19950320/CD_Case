@@ -80,7 +80,9 @@
     .layui-nav-itemed>a {
         border-left: 5px solid #009688;
     }
-
+    .layui-nav-itemed>a{
+        background: #4E5465;
+    }
     .admin-item {
         width: 100%;
         padding: 0.5rem 10%;
@@ -176,6 +178,10 @@
             </dl>
         </li>
         <li class="layui-nav-item">
+            <a href="javascript:;" goUrl='formList'>
+                <i class="iconfont icon-jianbao"></i> &nbsp;表单</a>
+        </li>
+        <li class="layui-nav-item">
             <a class="layui-nav-bor" href="javascript:;">
                 <i class="iconfont icon-tuxing"></i> &nbsp;echarts</a>
             <dl class="layui-nav-child">
@@ -209,7 +215,7 @@
         </li>
         <li class="layui-nav-item ">
             <a class="layui-nav-bor" href="javascript:;">
-                <i class="layui-icon" style="color: #1E9FFF;">&#xe68e;</i> 解决方案</a>
+                <i class="layui-icon" style="color: #1E9FFF;">&#xe68e;</i> &nbsp;解决方案</a>
             <dl class="layui-nav-child">
                 <dd>
                     <a href="javascript:;" goUrl='table'>table</a>
@@ -224,7 +230,7 @@
         </li>
         <li class="layui-nav-item">
             <a href="">
-                <i class="layui-icon" style=" color: #1E9FFF;">&#xe68e;</i> 发布商品</a>
+                <i class="layui-icon" style=" color: #1E9FFF;">&#xe68e;</i> &nbsp;发布商品</a>
         </li>
     </ul>
     <ul id="hideIcon" style="display: none;"></ul>
@@ -251,10 +257,18 @@
                         return;
                     }
                 }
+                // 关闭二级菜单
+                if($(this).parent(".layui-nav-item").hasClass("layui-this")){
+                    $(this).parent(".layui-nav-item").siblings().removeClass('layui-nav-itemed')
+                }
                 // iframe加载页面
                 $("#iframe-content").attr("src", './pages/' + $(this).attr('goUrl') + '/index.html');
 
             } else {
+                // 两个二级菜单关闭上一个二级菜单只显示一个二级菜单控制 
+                if ($(this).parent(".layui-nav-item").hasClass('layui-nav-itemed')) {
+                    $(this).parent(".layui-nav-item").siblings().removeClass('layui-nav-itemed')
+                }
                 return false;
             }
         })

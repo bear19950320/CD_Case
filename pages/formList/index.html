@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>表单集合</title>
+    <link href="../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
+
+    <!-- 引用的公用CSS样式 -->
+    <link rel="stylesheet" href="../../dist/css/styleAll.css">
+    <link rel="stylesheet" href="../../dist/css/index.css">
+    <style>
+         .xtree_contianer {
+            width: 500px;
+            overflow: auto;
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 10px 0 25px 5px;
+        }
+
+        .div-btns {
+            margin: 20px 0;
+        }
+
+        /* .layui-form-label {
+            width: 60px !important;
+        } */
+    </style>
+</head>
+
+<body class="layui-row" style="overflow-x: hidden;">
+    <div class="layui-col-lg12" style="height: 100%;">
+        <!-- 身体  -->
+        <section class="content" style="width: 100%;height: 100%;">
+            <div id='searchCon'></div>
+            <div>
+                <button class="layui-btn" onclick="reloadForm()">点击重置</button>
+                <button class="layui-btn" onclick="submit()">点击提交</button>
+            </div>
+            <div id="testIm"></div>
+            
+        </section>
+    </div>
+    <!-- 调用JS的Start -->
+    <script src="../../dist/js/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 最新的layui的Js引用  -->
+    <script src="../../dist/layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../dist/layui/lay/modules/layer.js"></script>
+    <script src="../../dist/js/layui-xtree.js"></script>
+    <script src="../../dist/js/common.js"></script>
+    <!-- 调用JS的End -->
+    <script>
+        var name = ['姓名', '是否在职', '年龄', '实数', "个人介绍", '电话号码', '姓名拼音', '字符数字混合', '年月日事件', '出生年月日', '年月', '月日', '时间', '性别', '专业', '籍贯', '单位下拉', '单位树形枚举', '专业值', '性别值', '字符串依赖枚举', '岗位津贴', '津贴数目', '岗位津贴时间', '岗位津贴年限', '文件附件', '图片附件', '数字逻辑字段', '字符串逻辑字段', '日期表达式'];
+        // 30
+        var ids = ['name', 'activity', 'event', 'age', "close", 'primaryBox', 'TextArea', 'input8', 'input9', 'input10', 'input11', 'input12', 'input13', 'input14', 'input15', 'input16', 'input17', 'input18', 'input19', 'input20', 'input21', 'input22', 'input23', 'input24', 'input25', 'input26', 'input27', 'input28', 'input29', 'input30']
+        var type = ['input', 'switch', 'input', 'input', 'textArea', 'input', 'input', 'input', 'date', 'date', 'date', 'date', 'date', 'select', 'input', 'input', 'input', 'treeInput', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input']
+        var valOption = ['', '是|否', '', "", '', '', ["开关", "读书", "看吧"], '', '11', '12', '13', '14', '15', ['男', '女'], '', '', '', "id"]
+        common.form($("#searchCon"), name, type, valOption, ids, '3');// 填充到的 1. 父元素 2. label的名字 3. 填充的元素类型 4. 提示/备注/select的option的val 5. 填充元素ID 6. 列数 
+       
+        // 实例请求同目录下自己建造的JSON
+        $.ajax({
+            url: 'formJson.json',
+            type: 'GET',
+            data: {},
+            dataType: "JSON",
+            processData: false,
+            contentType: false,
+            success: function (data) {
+
+
+            },
+            error: function () {
+
+            }
+        })
+        //xtree数据结构
+
+        var form;
+        layui.use('form', function () {
+            form = layui.form;
+            form.render();
+        });
+        //  如果要置空重新填写
+        function reloadForm() {
+            common.form($("#searchCon"), name, type, valOption, ids);
+            form.render();
+        }
+        function submit() {
+            var formData = new FormData(document.getElementById("formCom"));
+            $.ajax({
+                url: '/extention/teacherInfoManager/getTime',
+                type: 'POST',
+                data: formData,
+                dataType: "JSON",
+                processData: false,
+                contentType: false,
+                success: function (data) {
+
+
+                },
+                error: function () {
+
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

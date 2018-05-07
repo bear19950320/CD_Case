@@ -37,11 +37,11 @@ var common = {
                         case 'select': {
                             html += ': <select class="form-control" id="' + id[i] + '"  title="' + nameArr[i] + '">'
                             html += '<option value="0">全部</option>';
-                            html += option(valOption[i]);
+                            html += commFun.option(valOption[i]);
                             html += '</select>';
                             break;
                         }
-                       
+
                     }
                     html += '</div></div>'
                 }
@@ -53,7 +53,7 @@ var common = {
     /**
      * 表单生成
      */
-    'form': function (obj, name, type, valOption, id) {
+    'form': function (obj, name, type, valOption, id, col) {
         var objLength, nameArr;
         if (typeof name != Array) {
             nameArr = name.split(",")
@@ -62,37 +62,56 @@ var common = {
             objLength = name.length;
             nameArr = name;
         }
+        console.log(valOption)
         if (objLength > 0) {
             var html = '<form class="layui-row layui-form searchCon" id="formCom">'
             for (var i = 0; i < objLength; i++) {
                 if (type[i]) {
-                    if (objLength % 3 == 0) {
-                        html += '<div class="layui-col-lg4 layui-col-sm4 layui-col-md4">';
-                    } else if (objLength % 4 == 0) {
-                        html += '<div class="layui-col-lg3 layui-col-sm3 layui-col-md3">';
+                    //  判断是否是控制列数
+                    if (col) {
+                        if (col == 3) {
+                            html += '<div class="layui-col-lg4 layui-col-sm4 layui-col-md4 formInput">';
+                        } else if (col == 2) {
+                            html += '<div class="layui-col-lg6 layui-col-sm6 layui-col-md6 formInput">';
+                        } else if (col == 1) {
+                            html += '<div class="formInput layui-col-lg10 layui-col-sm10 layui-col-md10 layui-col-md-offset1 layui-col-sm-offset1 layui-col-lg-offset1">';
+                        }
                     } else {
-                        html += '<div class="layui-col-lg6 layui-col-sm6 layui-col-md6">';
+                        if (objLength % 3 == 0) {
+                            html += '<div class="layui-col-lg4 layui-col-sm4 layui-col-md4 formInput">';
+                        } else if (objLength % 4 == 0) {
+                            html += '<div class="layui-col-lg3 layui-col-sm3 layui-col-md3 formInput">';
+                        } else {
+                            html += '<div class="layui-col-lg6 layui-col-sm6 layui-col-md6 formInput">';
+                        }
                     }
+                    // 填充label的内容
                     html += '<label class="layui-form-label">' + nameArr[i] + ' </label>';
-                    if (valOption[i].length >= 4) {
-                        html += '<div class="layui-input-block">';
+                    // 判断是否是复选框
+                    if (typeof valOption[i] == 'object') {
+                        if (valOption[i].length >= 4) {
+                            html += '<div class="layui-input-block">';
+                        } else {
+                            html += '<div class="layui-input-inline">';
+                        }
                     } else {
                         html += '<div class="layui-input-inline">';
                     }
                     $type = type[i];
+                    console.log("判断生成元素的类型------" + $type)
                     switch ($type) {
                         /*如果这是input框
                         */
                         case 'input': {
-                            html += ': <input type="text" id="' + id[i] + '"  name="' + id[i] + '" title="' + nameArr[i] + '" />'
+                            html += ': <input type="text" id="' + id[i] + '"  name="' + id[i] + '" title="' + nameArr[i] + '"  placeholder="请输入' + nameArr[i] + '" />'
                             break;
                         }
                         /*如果这是select框
                         **/
                         case 'select': {
-                            html += ' <select class="form-control" id="' + id[i] + '"  name="' + id[i] + '"  title="' + nameArr[i] + '">'
+                            html += ' <select class="form-control" id="' + id[i] + '"  name="' + id[i] + '" placeholder="请选择' + nameArr[i] + '"  title="' + nameArr[i] + '">'
                             html += '<option value="0">全部</option>';
-                            html += option(valOption[i]);
+                            html += commFun.option(valOption[i]);
                             html += '</select>';
                             break;
                         }
@@ -101,8 +120,33 @@ var common = {
                             break;
                         }
                         case 'primaryNew': {
-                            html += ': <div style="display:block;">' + primaryNew(valOption[i]) + '</div>';
+                            html += ' <div style="display:block;">' + commFun.primaryNew(valOption[i], 'yyyy-MM-dd HH:mm:ss', '2018-5-12') + '</div>';
                             break;
+                        }
+                        case 'textArea': {
+                            html += '<textarea rows="1" cols="18" placeholder="请输入' + nameArr[i] + '"></textarea>'
+                            break;
+                        }
+                        case 'date': {
+                            $$dateType = commType[valOption[i]];
+                            html += '<input type="text" class="layui-input" id="' + id[i] + '" name="' + id[i] + '" title="' + nameArr[i] + '" placeholder="请选择' + nameArr[i] + '" />'
+                            // 根据格式初始化 layuiDate格式
+                            if (valOption[i] == 11) {
+                                commFun.layuiDate(id[i], commType[valOption[i]], '', commStyle[valOption[i]])
+                            } else if (valOption[i] == 12) {
+                                commFun.layuiDate(id[i], commType[valOption[i]], '', commStyle[valOption[i]])
+                            } else if (valOption[i] == 13) {
+                                commFun.layuiDate(id[i], commType[valOption[i]], '', commStyle[valOption[i]])
+                            } else if (valOption[i] == 14) {
+                                commFun.layuiDate(id[i], commType[valOption[i]], '', commStyle[valOption[i]])
+                            } else if (valOption[i] == 15) {
+                                commFun.layuiDate(id[i], commType[valOption[i]], '', commStyle[valOption[i]])
+                            }
+                            break;
+                        }
+                        case 'treeInput': {
+                            html += '<input type="text" id="' + id[i] + '"  name="' + id[i] + '" title="' + nameArr[i] + '"  placeholder="请选择' + nameArr[i] + '"  onclick="commFun.treeFun(id)" />'
+
                         }
                     }
                     html += '</div></div>'
@@ -110,41 +154,127 @@ var common = {
             }
             html += '</form>';
             $(obj).html(html);
+
         }
     }
 }
-/**
- * 搜索下面的select的option渲染
- * @param {search>select} Array 
- */
-function option(Array) {
-    var html = '';
-    for (var i in Array) {
-        html += '<option value="' + (Number(i) + 1) + '">' + Array[i] + '</option>'
+var commFun = {
+    /**
+     * 搜索下面的select的option渲染
+     * @param {search>select} Array 
+     */
+    "option": function (Array) {
+        var html = '';
+        for (var i in Array) {
+            html += '<option value="' + (Number(i) + 1) + '">' + Array[i] + '</option>'
+        }
+        return html;
+    },
+    /**
+     * 搜索下面的primaryNew的新方法渲染
+     * @param {search>primaryNew} Array 
+     * 下面的name需要更改
+     */
+    "primaryNew": function (Array) {
+        var html = '';
+        for (var i in Array) {
+            html += ' <input type="checkbox" name="like[write]" title="' + Array[i] + '">'
+        }
+        return html;
+    },
+    /**
+     * 搜索下面的primaryNew的原始方法渲染
+     * @param {search>primaryOld} Array 
+     * 下面的name需要更改
+    */
+    "primaryOld": function (Array) {
+        var html = '';
+        for (var i in Array) {
+            html += ' <input type="checkbox" name="like[write]" lay-skin="primary" title="' + Array[i] + '">'
+        }
+        return html;
+    },
+    "layuiDate": function (id, style, val, type) {
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#' + id //指定元素
+                , type: type
+                , format: style
+                , value: val
+                , istem: true
+            });
+        });
+    },
+    "treeFun": function (id) {
+        console.log(id)
+        layer.open({
+            type: 1,
+            content: '<div class="layui-form"><div id="xtree1" class="xtree_contianer"></div></div>' //这里content是一个普通的String
+            ,area: ['600px', '300px'],
+            offset: 'auto',
+            btn:["确认","取消","清除"],
+            btnAlign :'c',
+            yes: function(index, layero){
+                layer.msg("确认")
+                //按钮【按钮一】的回调
+            },
+            btn2: function(index,layero){
+                layer.msg("取消");
+                return false;
+            },
+            btn3: function(index,layero){
+                layuiXtree.prototype.render = function () {
+                    var _this = this;
+                    _this.Loading(_this._options);
+                }
+                layer.msg("清除")
+                return false;
+            }
+        });
+       
+        layui.use(['form'], function () {
+            var form = layui.form;
+            $.ajax({
+                url: 'treeJosn.json',
+                type: 'GET',
+                data: '',
+                dataType: "JSON",
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    var xtree1 = new layuiXtree({
+                        elem: 'xtree1'   //(必填) 放置xtree的容器，样式参照 .xtree_contianer
+                        , form: form     //(必填) layui 的 from
+                        , data: data     //(必填) json数据
+                    });
+                },
+                error: function () {
+    
+                }
+            });
+            //1、最基础的用法 - 直接绑定json
+        });
+
     }
-    return html;
 }
-/**
- * 搜索下面的primaryNew的新方法渲染
- * @param {search>primaryNew} Array 
- * 下面的name需要更改
- */
-function primaryNew(Array) {
-    var html = '';
-    for (var i in Array) {
-        html += ' <input type="checkbox" name="like[write]" title="' + Array[i] + '">'
-    }
-    return html;
+
+
+var commType = {
+    "10": "HH:mm",            //  时间类型
+    "11": "yyyy-MM-dd HH:mm:ss",            //	年月日类型时间
+    "12": "yyyy-MM-dd",             //	年月日类型
+    "13": "yyyy-MM",              //	年月类型
+    "14": "MM-dd",              //	月日类型
+    "15": "HH:mm:ss",            //	时间类型
+};
+var commStyle = {
+    "10": "time",                    //  时间类型
+    "11": "datetime",     //	年月日类型时间
+    "12": "date",             //	年月日类型
+    "13": "month",               //	年月类型
+    "14": "date",                //	月日类型
+    "15": "time",
 }
-/**
- * 搜索下面的primaryNew的原始方法渲染
- * @param {search>primaryOld} Array 
- * 下面的name需要更改
- */
-function primaryOld(Array) {
-    var html = '';
-    for (var i in Array) {
-        html += ' <input type="checkbox" name="like[write]" lay-skin="primary" title="' + Array[i] + '">'
-    }
-    return html;
-}
+
