@@ -244,6 +244,9 @@
     }
     // 首页的跳转
     var pageOne = function () {
+        $("#menu .layui-this").removeClass("layui-this");
+        $("#menu .layui-nav-item").removeClass("layui-nav-itemed");
+
         $("#iframe-content").attr("src", './pages/index/index.html')
     }
     /**

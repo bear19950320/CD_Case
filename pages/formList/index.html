@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../dist/css/styleAll.css">
     <link rel="stylesheet" href="../../dist/css/index.css">
     <style>
-         .xtree_contianer {
+        .xtree_contianer {
             width: 500px;
             overflow: auto;
             margin-bottom: 30px;
@@ -23,28 +23,92 @@
             margin: 20px 0;
         }
 
-        /* .layui-form-label {
-            width: 60px !important;
-        } */
+        .content>.form-body>h3 {
+            width: 100%;
+            background: #dcd6d6;
+            padding: 0.6rem 1.5rem;
+            margin-top: 0;
+        }
+
+        .content>.form-body {
+            margin-bottom: 2rem;
+            border: 1px solid #a5a2a2;
+        }
+
+        .layui-timeline {
+            height: 80%;
+            margin-top: 10%;
+            width: 5rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .layui-timeline>.layui-timeline-item {
+            height: 33%;
+        }
+
+        .layui-timeline>.layui-timeline-item>.layui-timeline-axis {
+            width: 2rem;
+            height: 2rem;
+            left: -0.6rem;
+            top: -0.6rem;
+            line-height: 2rem;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid #5FB878;
+        }
+
+        .layui-cur {
+            color: #fff;
+            background: #0093ff;
+        }
     </style>
 </head>
 
-<body class="layui-row" style="overflow-x: hidden;">
+<body class="layui-row scroll" style="overflow-x: hidden;">
     <div class="layui-col-lg12" style="height: 100%;">
+        <!-- 时间线 -->
+        <ul class="layui-timeline" id="timeline-menu">
+            <li class="layui-timeline-item">
+                <a href="#one" class="layui-timeline-axis layui-cur">1</a>
+            </li>
+            <li class="layui-timeline-item">
+                <a href="#two" class="layui-timeline-axis">2</a>
+            </li>
+            <li class="layui-timeline-item">
+                <a href="#three" class="layui-timeline-axis">3</a>
+            </li>
+        </ul>
         <!-- 身体  -->
-        <section class="content" style="width: 100%;height: 100%;">
-            <div id='searchCon'></div>
+        <section class="content automatic" style="width: 100%;padding-right: 5rem;">
+            <div class="form-body">
+                <a href="#one" class="timeline-item" name="one"></a>
+                <h3>个人信息</h3>
+                <div id='searchCon'></div>
+                <h3>个人学历</h3>
+                <table id="table1" lay-filter="table1"></table>
+            </div>
+            <div class="form-body">
+                <a href="#two" class="timeline-item" name='two'></a>
+                <h3>个人信息2</h3>
+                <div id="testIm" class="form-body"></div>
+            </div>
+            <div class="form-body">
+                <a href="#three" class="timeline-item" name='three'></a>
+                <h3>个人信息3</h3>
+                <div id="testIm1" class="form-body"></div>
+            </div>
+
             <div>
                 <button class="layui-btn" onclick="reloadForm()">点击重置</button>
                 <button class="layui-btn" onclick="submit()">点击提交</button>
             </div>
-            <div id="testIm"></div>
-            
         </section>
     </div>
     <!-- 调用JS的Start -->
     <script src="../../dist/js/jquery.min.js"></script>
-
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
@@ -54,32 +118,86 @@
     <script src="../../dist/js/layui-xtree.js"></script>
     <script src="../../dist/js/common.js"></script>
     <!-- 调用JS的End -->
+    <script type="text/html" id="operation">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" >查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">审核</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">终止</a>
+    </script>
     <script>
+        $(document).ready(function () {
+            // 滚动内容右边显示步骤
+            $(".scroll").scroll(function () {
+                var top = $(document).scrollTop();          //定义变量，获取滚动条的高度
+                var menu = $("#timeline-menu");                      //定义变量，抓取#menu
+                var items = $(".content").find(".timeline-item");    //定义变量，查找.item
+                var curId = "";                             //定义变量，当前所在的楼层item #id 
+                items.each(function () {
+                    var m = $(this);  //定义变量，获取当前类
+                    var itemsTop = m.offset().top;        //定义变量，获取当前类的top偏移量
+                    if (top > itemsTop - 100) {
+                        curId = "#" + m.attr("name");
+                    } else {
+                        return false;
+                    }
+                });
+                // //给相应的楼层设置cur,取消其他楼层的cur
+                var curLink = menu.find(".layui-cur");
+                if (curId && $(curLink).attr("href") != curId) {
+                    $(curLink).removeClass("layui-cur");
+                    $(menu).find("a[href='" + curId + "']").addClass("layui-cur")
+                }
+            });
+        });
+
+        // 渲染form的数据
         var name = ['姓名', '是否在职', '年龄', '实数', "个人介绍", '电话号码', '姓名拼音', '字符数字混合', '年月日事件', '出生年月日', '年月', '月日', '时间', '性别', '专业', '籍贯', '单位下拉', '单位树形枚举', '专业值', '性别值', '字符串依赖枚举', '岗位津贴', '津贴数目', '岗位津贴时间', '岗位津贴年限', '文件附件', '图片附件', '数字逻辑字段', '字符串逻辑字段', '日期表达式'];
-        // 30
         var ids = ['name', 'activity', 'event', 'age', "close", 'primaryBox', 'TextArea', 'input8', 'input9', 'input10', 'input11', 'input12', 'input13', 'input14', 'input15', 'input16', 'input17', 'input18', 'input19', 'input20', 'input21', 'input22', 'input23', 'input24', 'input25', 'input26', 'input27', 'input28', 'input29', 'input30']
         var type = ['input', 'switch', 'input', 'input', 'textArea', 'input', 'input', 'input', 'date', 'date', 'date', 'date', 'date', 'select', 'input', 'input', 'input', 'treeInput', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input', 'input']
         var valOption = ['', '是|否', '', "", '', '', ["开关", "读书", "看吧"], '', '11', '12', '13', '14', '15', ['男', '女'], '', '', '', "id"]
         common.form($("#searchCon"), name, type, valOption, ids, '3');// 填充到的 1. 父元素 2. label的名字 3. 填充的元素类型 4. 提示/备注/select的option的val 5. 填充元素ID 6. 列数 
-       
-        // 实例请求同目录下自己建造的JSON
-        $.ajax({
-            url: 'formJson.json',
-            type: 'GET',
-            data: {},
-            dataType: "JSON",
-            processData: false,
-            contentType: false,
-            success: function (data) {
+        common.form($("#testIm"), name, type, valOption, ids, '2');
+        common.form($("#testIm1"), name, type, valOption, ids, '1');
+        // table的渲染
+        layui.use('table', function () {
+            var table = layui.table;
+            //第一个实例
+            table.render({
+                elem: '#table1'
+                , height: '600px'
+                , width: $("#content").width()
+                , url: '../audit/user.json' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    { field: 'id', title: 'ID', width: '8%', sort: true, fixed: 'left' }
+                    , { field: 'username', title: '用户名', width: '8%' }
+                    , { field: 'sex', title: '性别', width: '8%', sort: true }
+                    , { field: 'city', title: '城市', width: '8%' }
+                    , { field: 'sign', title: '签名', width: '22%' }
+                    , { field: 'experience', title: '积分', width: '8%', sort: true }
+                    , { field: 'score', title: '评分', width: '8%', sort: true }
+                    , { field: 'classify', title: '职业', width: '8%' }
+                    , { field: '', title: '操作', width: '21%', toolbar: '#operation' }
+                ]]
+            });
+            // 按钮监听
+            table.on('tool(table1)', function (obj) {
+                var data = obj.data;
+                if (obj.event === 'detail') {
+                    layer.alert(JSON.stringify(data) + ' 的查看操作');
+                } else if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);
+                    });
+                } else if (obj.event === 'edit') {
+                    layer.alert('编辑行：<br>' + JSON.stringify(data))
+                }
+            });
+
+        });
 
 
-            },
-            error: function () {
-
-            }
-        })
-        //xtree数据结构
-
+        //xtree数据结构（这是枚举树）
         var form;
         layui.use('form', function () {
             form = layui.form;

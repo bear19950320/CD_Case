@@ -205,7 +205,11 @@ ol, ul {
     height: 43px;
 }
 .searchCon .layui-input-inline {
+    float: left;
     line-height: 36px;
+}
+.searchCon .layui-word-aux{
+    padding-left: 1rem;
 }
 
 .searchCon .layui-input-inline>input {
