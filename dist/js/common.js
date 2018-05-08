@@ -1,3 +1,9 @@
+/**
+ * common.js
+ * @authors Bear (you@example.org)
+ * @date    2018-4-26 15:20:23
+ * @version $Id$
+ */
 var common = {
     /**
      *  搜索框的渲染
