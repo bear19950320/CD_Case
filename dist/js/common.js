@@ -313,4 +313,12 @@ layui.use('element', function(){
     var element = layui.element;
     
 });
-  
+// 读取图片文件
+function readFile(obj) {
+    var file = obj;
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+        imgss.push(this.result)
+    }
+}

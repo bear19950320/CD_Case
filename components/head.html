@@ -167,7 +167,7 @@
                     <i class="layui-icon">&#xe625;</i>
                 </button>
                 <!-- 用户名的菜单 -->
-                <ul>
+                <ul class="admin-menu">
                     <li>
                         <a href="javascript:;" url="modular/personalData" onclick="ifreamUrl(this)">个人中心</a>
                     </li>
@@ -209,12 +209,13 @@
     });
     // 用户名点击展现用户菜单栏
     var flagAdmin = 0;
-    $("#admin-btn>button").click(function () {
+    $("#admin-btn>button").click(function (e) {
+        e.preventDefault();
         flagAdmin++;
         if (flagAdmin % 2 == 0) {
+            flagAdmin = 0;
             $(this).siblings('ul').css({ "display": "none" })
         } else {
-            // $(this).find("i").
             $(this).siblings('ul').css({ "display": "block" })
         }
     });

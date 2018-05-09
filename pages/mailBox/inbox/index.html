@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>已审核数据填报</title>
+    <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
+
+    <!-- 引用的公用CSS样式 -->
+    <link rel="stylesheet" href="../../../dist/css/styleAll.css">
+    <link rel="stylesheet" href="../../../dist/css/index.css">
+    <style>
+        h3 {
+            width: 100%;
+            padding: 0 2rem;
+        }
+
+        .mail {
+            padding: 1rem;
+            background: rgb(228, 226, 226);
+            border-bottom: 1px solid #a09f9f;
+        }
+
+        .checkbox {
+            position: relative;
+        }
+
+        .checkbox>input[type='checkbox'] {
+            width: 1rem;
+            height: 1rem;
+            margin-left: 0;
+            position: static;
+        }
+
+        .mailBox {
+            padding: 0.5rem 0;
+            background: #f9f4f4;
+        }
+
+        .mailBox>ul>li {
+            border-bottom: 1px solid #a09f9f;
+            background: #fff;
+            padding: 0.5rem 1rem;
+        }
+
+        .mailBox>ul>li:hover {
+            background: #f5f5f5;
+        }
+
+        .sendPe {
+            float: left;
+            width: 20%;
+        }
+
+        .sendCheckbox {
+            position: relative;
+            width: 1.3rem;
+            height: 1.3rem;
+            line-height: 1.3rem;
+            border: 1px solid #a09f9f;
+            border-radius: 5px;
+        }
+
+        .sendCheckbox>.oncheckbox {
+            display: none;
+        }
+
+        .sendChecked>.oncheckbox {
+            display: block;
+            font-weight: 600;
+            color: #57a7f1;
+            position: absolute;
+            top: -0.1rem;
+            left: 0.1rem;
+            font-size: 1rem;
+        }
+
+        .sendPe>.sender {
+            margin-left: 2rem;
+        }
+
+        .sendTitle {
+            float: left;
+            width: 70%;
+        }
+
+        .sendTime {
+            float: left;
+            width: 10%;
+        }
+
+        .mailBox>ul>.sendLi {
+            background: #ffffd5!important;
+        }
+    </style>
+</head>
+
+<body class="layui-row" style="overflow-x: hidden;">
+    <div class="layui-col-lg12" style="height: 100%;">
+        <!-- 身体  -->
+        <section class="content" style="width: 100%;height: 100%;">
+            <h3>收件箱</h3>
+            <div class="mail">
+                <button class="btn btn-default checkbox">
+                    <div class="pull-left sendCheckbox checkAll">
+                        <i class="iconfont icon-gou oncheckbox"></i>
+                    </div>
+                    <i class="iconfont icon-xiaosanjiaodown"></i>
+                </button>
+            </div>
+            <div class="mailBox">
+                <ul>
+                    <li class="automatic">
+                        <div class="sendPe">
+                            <div class="pull-left sendCheckbox">
+                                <i class="iconfont icon-gou oncheckbox"></i>
+                            </div>
+                            <div class="sender pull-left">腾讯云</div>
+                        </div>
+                        <div class="sendTitle">
+                            <div> 腾讯云优惠券放松 </div>
+                        </div>
+                        <div class="sendTime">5月8日</div>
+                    </li>
+                    <li class="automatic">
+                        <div class="sendPe">
+                            <div class="pull-left sendCheckbox">
+                                <i class="iconfont icon-gou oncheckbox"></i>
+                            </div>
+                            <div class="sender pull-left">腾讯云</div>
+                        </div>
+                        <div class="sendTitle">
+                            <div> 腾讯云优惠券放松 </div>
+                        </div>
+                        <div class="sendTime">5月8日</div>
+                    </li>
+                    <li class="automatic">
+                        <div class="sendPe">
+                            <div class="pull-left sendCheckbox">
+                                <i class="iconfont icon-gou oncheckbox"></i>
+                            </div>
+                            <div class="sender pull-left">腾讯云</div>
+                        </div>
+                        <div class="sendTitle">
+                            <div> 腾讯云优惠券放松 </div>
+                        </div>
+                        <div class="sendTime">5月8日</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- 调用JS的Start -->
+    <script src="../../../dist/js/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 最新的layui的Js引用  -->
+    <script src="../../../dist/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../../../dist/layui/lay/modules/laydate.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../../dist/layui/lay/modules/layer.js"></script>
+    <script src="../../../dist/js/common.js"></script>
+    <!-- 调用JS的End -->
+    <script>
+        $(document).ready(function () {
+
+        });
+        // 全选点击事件
+        $(".checkAll").click(function(){
+            var checkBox=$('.mailBox .automatic .sendCheckbox');
+            if (!$(this).hasClass('sendChecked')) {
+                $(this).addClass('sendChecked');
+                $(checkBox).addClass('sendChecked').parents('li').addClass("sendLi");
+            } else {
+                $(this).removeClass('sendChecked');
+                $(checkBox).removeClass('sendChecked').parents('li').removeClass("sendLi");
+            }
+        })
+        // 下面的行点击事件
+        $(".mailBox .automatic .sendCheckbox").click(function () {
+            var checkBox=$('.mailBox .automatic .sendCheckbox');
+            if (!$(this).hasClass('sendChecked')) {
+                $(this).addClass('sendChecked').parents('li').addClass("sendLi");
+            } else {
+                $(this).removeClass('sendChecked').parents('li').removeClass("sendLi");
+            }
+            //  行的点击是否被点击判断 
+            for(var i=0;maxLength=checkBox.length,i<maxLength;i++){
+                if(!$(checkBox).eq(i).hasClass('sendChecked')){
+                    if($(".checkAll").hasClass('sendChecked')){
+                        $(".checkAll").removeClass('sendChecked')
+                    }
+                    return ;
+                }else{
+                    $(".checkAll").removeClass('sendChecked')
+                }
+            }
+            $(".checkAll").addClass('sendChecked');
+        })
+    </script>
+
+</body>
+
+</html>
