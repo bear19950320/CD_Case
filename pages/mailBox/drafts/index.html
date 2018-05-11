@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>草稿箱</title>
+    <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
+
+    <!-- 引用的公用CSS样式 -->
+    <link rel="stylesheet" href="../../../dist/css/styleAll.css">
+    <link rel="stylesheet" href="../../../dist/css/index.css">
+    <style>
+        h3 {
+            width: 100%;
+            padding: 0 2rem;
+        }
+    </style>
+</head>
+
+<body class="layui-row" style="overflow-x: hidden;">
+    <div class="layui-col-lg12" style="height: 100%;">
+        <!-- 身体  -->
+        <section class="content" style="width: 100%;height: 100%;">
+            <h3>草稿箱</h3>
+            <div class="mail">
+                <div class="mail-search automatic">
+                    <div class="mail-query">
+                        <label>查询条件 :</label>
+                        <input type="text" class="form-control layui-input ">
+                    </div>
+                    <div class="mail-select">
+                        <select class="form-control">
+                            <option value="0">收件箱</option>
+                            <option value="1">发件箱</option>
+                            <option value="2">草稿箱</option>
+                            <option value="2">回收站</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-default btn-xm mail-search-btn">查询</button>
+                </div>
+            </div>
+            <!-- 邮箱身体 -->
+            <div class="mail-body automatic">
+                <!-- 邮箱左 -->
+                <div class="pull-left mail-left">
+                    <div class="mailBox">
+                        <div class="automatic list-title">
+                            <div class="sendPe">
+                                <div class="pull-left sendCheckboxI checkAll">
+                                    <i class="iconfont icon-gou oncheckbox"></i>
+                                </div>
+                                <div class="sender pull-left">多选项</div>
+                                <div class="sender pull-left">优先级</div>
+                                <div class="sender pull-left">状态</div>
+                            </div>
+                            <div class="sendTitle">
+                                <div style="text-align: center;">邮件标题</div>
+                            </div>
+                            <div class="sendTime">
+                                <div class="sender pull-left">附件</div>
+                                <div class="sender pull-left">发送方式</div>
+                                <div class="sender pull-left">发送日期</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                            <li class="automatic">
+                                <div class="sendPe">
+                                    <div class="pull-left sendCheckbox">
+                                        <i class="iconfont icon-gou oncheckbox"></i>
+                                    </div>
+                                    <div class="sender pull-left">选项</div>
+                                    <div class="sender pull-left">优</div>
+                                    <div class="sender pull-left">已读</div>
+                                </div>
+                                <div class="sendTitle">
+                                    <div>
+                                        <p>腾讯云优惠券放松asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqweqweqweqweqweqweqwdasdas</p>
+                                        <span class="delicon">
+                                            <i class="iconfont icon-huishouzhan"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sendTime">
+                                    <div class="sender pull-left">查看</div>
+                                    <div class="sender pull-left">抄送</div>
+                                    <div class="sender pull-left">2018-5-11 16:04</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- 调用JS的Start -->
+    <script src="../../../dist/js/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 最新的layui的Js引用  -->
+    <script src="../../../dist/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../../../dist/layui/lay/modules/laydate.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../../dist/layui/lay/modules/layer.js"></script>
+    <script src="../../../dist/js/common.js"></script>
+    <!-- 调用JS的End -->
+    <script>
+        $(document).ready(function () {
+
+        });
+        // 全选点击事件
+        $(".checkAll").click(function () {
+            var checkBox = $('.mailBox .automatic .sendCheckbox');
+            if (!$(this).hasClass('sendChecked')) {
+                $(this).addClass('sendChecked')
+                $(checkBox).addClass('sendChecked').parents('li').addClass("sendLi");
+            } else {
+                $(this).removeClass('sendChecked');
+                $(checkBox).removeClass('sendChecked').parents('li').removeClass("sendLi");
+            }
+        })
+
+        // 下面的行点击事件
+        $(".mailBox .automatic .sendCheckbox").click(function () {
+            var checkBox = $('.mailBox .automatic .sendCheckbox');
+            if (!$(this).hasClass('sendChecked')) {
+                $(this).addClass('sendChecked').parents('li').addClass("sendLi");
+            } else {
+                $(this).removeClass('sendChecked').parents('li').removeClass("sendLi");
+            }
+            //  行的点击是否被点击判断 
+            for (var i = 0; maxLength = checkBox.length, i < maxLength; i++) {
+                if (!$(checkBox).eq(i).hasClass('sendChecked')) {
+                    if ($(".checkAll").hasClass('sendChecked')) {
+                        $(".checkAll").removeClass('sendChecked')
+                    }
+                    return;
+                } else {
+                    $(".checkAll").removeClass('sendChecked')
+                }
+            }
+            $(".checkAll").addClass('sendChecked');
+        });
+        var mailLi = $(".mailBox>ul>li");
+        $(mailLi).click(function () {
+            layer.open({
+                type: 2,
+                content: '../mailDetails/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                , area: ["80%", "80%"]
+            });
+        })
+        $(".delicon").click(function (e) {
+            e.stopPropagation();
+            layer.confirm('是否删除该邮件', {
+                btn: ['确认删除', '取消'] //按钮
+            }, function () {
+                layer.msg('删除成功', {icon: 1});
+            }, function () {
+                layer.msg('继续编辑');
+            });
+        })
+    </script>
+</body>
+
+</html>

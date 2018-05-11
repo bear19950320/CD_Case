@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>邮件详情</title>
+    <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
+
+    <!-- 引用的公用CSS样式 -->
+    <link rel="stylesheet" href="../../../dist/css/styleAll.css">
+    <link rel="stylesheet" href="../../../dist/css/index.css">
+    <style>
+        h3 {
+            width: 100%;
+            padding: 0 2rem;
+        }
+    </style>
+</head>
+
+<body class="layui-row" style="overflow-x: hidden;">
+    <div class="layui-col-lg12" style="height: 100%;">
+        <!-- 身体  -->
+        <section class="content" style="width: 100%;height: 100%;">
+            <!-- 邮箱身体 -->
+            <div class="mail-body automatic">
+                <!-- 邮箱右 -->
+                <div class="pull-right mail-right">
+                    <!-- 邮箱右-标题 -->
+                    <p class="mail-title">
+                        <i class="iconfont icon-neirongwendang"></i> 邮件内容</p>
+                    <!-- 邮箱右-提示 -->
+                    <div class="mail-content-title">
+                        <div class="mail-h automatic">
+                            <div class="mail-h-label">标题 :</div>
+                            <p class="mail-h-p"> 网易云云服务器优惠券</p>
+                        </div>
+                        <div class="mail-h automatic">
+                            <div class="mail-h-label">发件人 :</div>
+                            <p class="mail-h-p"> 网易云</p>
+                        </div>
+                        <div class="mail-h automatic">
+                            <div class="mail-h-label">发送日期 :</div>
+                            <p class="mail-h-p"> 2018-5-11 14:54</p>
+                        </div>
+                        <div class="mail-h automatic">
+                            <div class="mail-h-label">收件人 :</div>
+                            <p class="mail-h-p"> Bearcarrey@163.com</p>
+                        </div>
+                        <div class="mail-h automatic">
+                            <div class="mail-h-label">抄送 :</div>
+                            <p class="mail-h-p"> Bear@163.com</p>
+                        </div>
+                        <div class="mail-h automatic">
+                            <div class="mail-h-label">紧急邮箱 :</div>
+                            <p class="mail-h-p"> </p>
+                        </div>
+                    </div>
+                    <!-- 邮箱右-内容 -->
+                    <div class="mail-content-con">
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <!-- 调用JS的Start -->
+    <script src="../../../dist/js/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 最新的layui的Js引用  -->
+    <script src="../../../dist/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../../../dist/layui/lay/modules/laydate.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../../dist/layui/lay/modules/layer.js"></script>
+    <script src="../../../dist/js/common.js"></script>
+    <!-- 调用JS的End -->
+    <script>
+        $(document).ready(function () {
+
+        });
+        // 全选点击事件
+        $(".checkAll").click(function () {
+            var checkBox = $('.mailBox .automatic .sendCheckbox');
+            if (!$(this).hasClass('sendChecked')) {
+                $(this).addClass('sendChecked')
+                $(checkBox).addClass('sendChecked').parents('li').addClass("sendLi");
+            } else {
+                $(this).removeClass('sendChecked');
+                $(checkBox).removeClass('sendChecked').parents('li').removeClass("sendLi");
+            }
+        })
+
+        // 下面的行点击事件
+        $(".mailBox .automatic .sendCheckbox").click(function () {
+            var checkBox = $('.mailBox .automatic .sendCheckbox');
+            if (!$(this).hasClass('sendChecked')) {
+                $(this).addClass('sendChecked').parents('li').addClass("sendLi");
+            } else {
+                $(this).removeClass('sendChecked').parents('li').removeClass("sendLi");
+            }
+            //  行的点击是否被点击判断 
+            for (var i = 0; maxLength = checkBox.length, i < maxLength; i++) {
+                if (!$(checkBox).eq(i).hasClass('sendChecked')) {
+                    if ($(".checkAll").hasClass('sendChecked')) {
+                        $(".checkAll").removeClass('sendChecked')
+                    }
+                    return;
+                } else {
+                    $(".checkAll").removeClass('sendChecked')
+                }
+            }
+            $(".checkAll").addClass('sendChecked');
+        })
+    </script>
+
+</body>
+
+</html>
