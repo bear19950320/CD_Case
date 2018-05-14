@@ -671,3 +671,48 @@ ol, ul {
     text-align: center;
 }
 /* -------------------邮箱样式End ------------ */
+
+
+/* ------------------个人查询信息------------- */
+.inquiries-search{
+    width: 100%;
+    min-height: 200px;
+    background: #fff;
+}
+.inquiries-col,.inquiries-col-btn{
+    float: left;
+    width:33%;
+    margin:0.5rem 0 ;
+    padding: 0.5rem 1rem;
+}
+.inquiries-col-btn{
+    padding: 0;
+    margin: 1rem 0 0 0;
+    padding-left:3.5rem; 
+}
+
+.inquiries-col>label{
+    width: 100px;
+    float: left;
+    height: 2rem;
+    text-align: right;
+    margin-bottom: 0;
+    line-height: 2rem;
+}
+.inquiries-col>.inquiries-input{
+    margin-left: 110px;
+    height: 2rem;
+}
+.inquiries-col>.inquiries-input>.layui-input{
+    height: 100%;
+}
+.inquiries-col>.inquiries-date>.layui-input{
+    float: left;
+    width: 45%;
+}
+.inquiries-col>.inquiries-date>span{
+    float: left;
+    line-height: 2rem;
+    text-align: center;
+    width: 10%;
+}

@@ -81,39 +81,6 @@
         $(document).ready(function () {
 
         });
-        // 全选点击事件
-        $(".checkAll").click(function () {
-            var checkBox = $('.mailBox .automatic .sendCheckbox');
-            if (!$(this).hasClass('sendChecked')) {
-                $(this).addClass('sendChecked')
-                $(checkBox).addClass('sendChecked').parents('li').addClass("sendLi");
-            } else {
-                $(this).removeClass('sendChecked');
-                $(checkBox).removeClass('sendChecked').parents('li').removeClass("sendLi");
-            }
-        })
-
-        // 下面的行点击事件
-        $(".mailBox .automatic .sendCheckbox").click(function () {
-            var checkBox = $('.mailBox .automatic .sendCheckbox');
-            if (!$(this).hasClass('sendChecked')) {
-                $(this).addClass('sendChecked').parents('li').addClass("sendLi");
-            } else {
-                $(this).removeClass('sendChecked').parents('li').removeClass("sendLi");
-            }
-            //  行的点击是否被点击判断 
-            for (var i = 0; maxLength = checkBox.length, i < maxLength; i++) {
-                if (!$(checkBox).eq(i).hasClass('sendChecked')) {
-                    if ($(".checkAll").hasClass('sendChecked')) {
-                        $(".checkAll").removeClass('sendChecked')
-                    }
-                    return;
-                } else {
-                    $(".checkAll").removeClass('sendChecked')
-                }
-            }
-            $(".checkAll").addClass('sendChecked');
-        })
     </script>
 
 </body>
