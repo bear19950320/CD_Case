@@ -94,7 +94,7 @@
                         <div class="inquiries-col-btn">
                             <button class="layui-btn layui-btn-sm layui-btn-normal">
                                 <i class="iconfont icon-sousuo"></i>&nbsp;&nbsp;查询</button>
-                            <button class="layui-btn layui-btn-sm layui-btn-danger">
+                            <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="readVal()">
                                 <i class="iconfont icon-qingchu"></i>&nbsp;&nbsp;清除</button>
                             <!-- <button class="layui-btn layui-btn-sm layui-btn-primary" onclick="maxSection(this)"><i class="iconfont icon-zuidahua"></i>&nbsp;&nbsp;最大化</button> -->
                         </div>
@@ -237,9 +237,6 @@
     <script src="../../../dist/js/common.js"></script>
     <!-- 调用JS的End -->
     <script>
-        $(document).ready(function () {
-
-        });
         // 全选点击事件
         $(".checkAll").click(function () {
             var checkBox = $('.mailBox .automatic .sendCheckbox');
@@ -253,8 +250,8 @@
         })
 
         // 下面的行点击事件
-        $(".mailBox .automatic .sendCheckbox").click(function () {
-            var checkBox = $('.mailBox .automatic .sendCheckbox');
+        var checkBox = $('.mailBox .automatic .sendCheckbox');
+        $(checkBox).click(function () {
             if (!$(this).hasClass('sendChecked')) {
                 $(this).addClass('sendChecked').parents('li').addClass("sendLi");
             } else {
@@ -273,8 +270,13 @@
             }
             $(".checkAll").addClass('sendChecked');
         });
+        //  获取查询的所有搜索框
+        var inquiriesVal=$(".inquiries-search").find(".inquiries-col").find('input');
+        //  清空查询的所有搜索框内的值
+        var readVal=function(){
+            $(inquiriesVal).val('');
+        }
     </script>
-
 </body>
 
 </html>
