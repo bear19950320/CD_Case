@@ -1,0 +1,25 @@
+{
+    "code": 0,
+    "msg": "",
+    "count": 14,
+    "data": [
+        {
+            "caseName":"测试",
+            "caseStar":"进行中",
+            "caseTitle":"同意",
+            "caseMoney":"5201.1",
+            "caseCode":"CO-506-102",
+            "caseYear":"2018-04-2018-12",
+            "caseNumber":1
+        },
+        {
+            "caseName":"A刊",
+            "caseStar":"进行中",
+            "caseTitle":"同意",
+            "caseMoney":"5201.1",
+            "caseCode":"CO-506-102",
+            "caseYear":"2018-04-2018-12",
+            "caseNumber":1
+        }
+    ]
+}

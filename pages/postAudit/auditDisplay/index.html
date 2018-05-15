@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>审核详情</title>
+    <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
+
+    <!-- 引用的公用CSS样式 -->
+    <link rel="stylesheet" href="../../../dist/css/styleAll.css">
+    <link rel="stylesheet" href="../../../dist/css/index.css">
+</head>
+<style>
+    .audit-com {
+        width: 100%;
+        padding: 0.5rem 2rem 0.5rem 0.5rem;
+    }
+
+    .audit-content {
+        width: 100%;
+        background: #fff;
+    }
+
+    .audit-head {
+        width: 100%;
+        border: 1px solid rgb(8, 7, 7);
+    }
+
+    .audit-head>h3 {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0.5rem 0;
+    }
+
+    .audit-head>.company {
+        width: 100%;
+        min-height: 20px;
+    }
+
+    .audit-head>.company>.company-input-con {
+        width: 33%;
+        padding-left: 2rem;
+    }
+
+    .audit-head>.company>.company-input-con>label {
+        width: 80px;
+        float: left;
+        text-align: right;
+    }
+
+    .company-input {
+        margin-left: 90px;
+    }
+
+    /* 审核身体 */
+
+    .audit-body {
+        width: 100%;
+    }
+
+    .audit-left {
+        width: 24%;
+        float: left;
+        border: 1px solid rgb(8, 7, 7);
+        border-bottom: 0;
+    }
+
+    .audit-title {
+        width: 100%;
+    }
+
+    .audit-title>h4 {
+        width: 100%;
+        font-weight: 600;
+        padding: 0.5rem 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .audit-simple>ul>li {
+        width: 33.333%;
+        float: left;
+        text-align: center;
+        border: 1px solid rgba(8, 7, 7);
+        border-right: 0;
+    }
+
+    .audit-simple>ul>li>span {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 2rem;
+    }
+
+    .audit-left>.audit-text {
+        width: 100%;
+    }
+
+    .audit-left>.audit-text>p {
+        font-size: 1rem;
+        line-height: 1.4rem;
+    }
+
+    .audit-left>.audit-list {
+        border: 1px solid rgb(8, 7, 7);
+        border-left: 0;
+        border-right: 0;
+        padding: 1.5rem 0.5rem;
+    }
+
+    .audit-left>.audit-list>ul>li {
+        float: left;
+        width: 33%;
+    }
+
+    .audit-left>.audit-list>ul>li>.audit-border {
+        width: 100%;
+        font-size: 1rem;
+        line-height: 1.4rem;
+    }
+
+    .audit-left>.audit-list>ul>li>.audit-border>span {
+        width: 40%;
+        margin: 0 5%;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        border-bottom: 1px solid rgb(8, 7, 7);
+    }
+
+    .audit-left>.audit-btn {
+        width: 100%;
+        padding: 0 1rem;
+        /* border:1px solid rgb(8, 7, 7); */
+    }
+
+    .audit-left>.audit-btn>.layui-btn {
+        margin-top: 0.5rem;
+        margin-left: 0;
+    }
+
+    .audit-rigth {
+        margin-left: 24%;
+        border-left: 0;
+        border: 1px solid rgb(8, 7, 7);
+    }
+
+    .audit-rigth>.audit-rigth-content {
+        margin-bottom: 1.5rem;
+        width: 99.5%;
+        border: 1px solid #cdced0;
+        border-radius: 2px;
+    }
+
+    .audit-rigth>.audit-rigth-content>.audit-title {
+        border: 0;
+        padding: 0.5rem 1rem;
+        background: #F4F6FC;
+    }
+
+    .audit-rigth>.audit-rigth-content>.audit-title>h5 {
+        text-align: left;
+        font-weight: 600;
+    }
+
+    .audit-info {
+        width: 100%;
+    }
+
+    .audit-info>ul {
+        height: 150px;
+    }
+
+    .audit-li {
+        width: 26%;
+        margin: 0.2rem 0;
+        float: left;
+        text-align: center;
+        padding-left: 0.2rem;
+    }
+
+    .audit-li>label {
+        text-align: justify;
+        text-align-last: justify;
+        width: 120px;
+        line-height: 1.8rem;
+        margin-bottom: 0;
+        float: left;
+    }
+
+    .audit-li>.audit-inout {
+        padding-left: 0.5rem;
+        text-align: left;
+        line-height: 1.8rem;
+        margin-left: 120px;
+    }
+
+    .audit-infoTable {
+        overflow-x: auto;
+        padding: 0.5rem 0;
+    }
+</style>
+
+<body>
+    <div class="audit-com">
+        <div class="audit-content">
+            <!-- 审核详情头部 -->
+            <div class="audit-head">
+                <h3>四川大学专职科研队伍暨专职博士后专业技术职务申报表</h3>
+                <div class="company automatic">
+                    <div class="company-input-con">
+                        <label> 单位 (盖章) : </label>
+                        <div class="company-input">法学院</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 审核详情身体 -->
+            <div class="audit-body automatic">
+                <div class="audit-left">
+                    <div class="audit-title">
+                        <h4>科研成果要求(必备一条)</h4>
+                    </div>
+                    <div class="audit-simple">
+                        <ul class="automatic">
+                            <li style="border-left:0;">
+                                <span>医学</span>
+                            </li>
+                            <li>
+                                <span>副研究员(专职科研)</span>
+                            </li>
+                            <li>
+                                <span>博士后</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="audit-text">
+                        <p>
+                            3.作为负责人主持国家自然科学寂静青年科学基金项目，且在B级及以上期刊发表学术论文 (或发表在Nature Index 收录的68种刊物， 或Thomson ESI及Elsevier高被引论文)≥1篇
+                        </p>
+                    </div>
+                    <div class="audit-list">
+                        <ul class="automatic">
+                            <li>
+                                <div class="audit-border">
+                                    应到
+                                    <span></span>人，
+                                </div>
+                            </li>
+                            <li>
+                                <div class="audit-border">
+                                    实到
+                                    <span></span>人，
+                                </div>
+                            </li>
+                            <li>
+                                <div class="audit-border">
+                                    同意
+                                    <span></span>人，
+                                </div>
+                            </li>
+                            <li>
+                                <div class="audit-border">
+                                    反对
+                                    <span></span>人，
+                                </div>
+                            </li>
+                            <li>
+                                <div class="audit-border">
+                                    弃权
+                                    <span></span>人，
+                                </div>
+                            </li>
+                            <li>
+                                <div class="audit-border">
+                                    回避
+                                    <span></span>人，
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="audit-btn">
+                        <button class="layui-btn layui-btn-normal">同意推荐</button>
+                        <button class="layui-btn layui-btn-danger">不同意推荐</button>
+                        <button class="layui-btn layui-btn-danger">驳回</button>
+                        <button class="layui-btn layui-btn-normal">退出</button>
+                        <button class="layui-btn layui-btn-normal">下载申报表及材料</button>
+                    </div>
+                </div>
+                <div class="audit-rigth">
+                    <!-- 基本信息 -->
+                    <div class="audit-rigth-content">
+                        <div class="audit-title">
+                            <h5>基本信息</h5>
+                        </div>
+                        <div class="audit-info">
+                            <ul class="automatic">
+                                <li class="audit-li">
+                                    <label>姓名:</label>
+                                    <div class="audit-inout"> 张郭 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>性别:</label>
+                                    <div class="audit-inout"> 男 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>出生年月:</label>
+                                    <div class="audit-inout"> 1978年06月 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>申报岗位:</label>
+                                    <div class="audit-inout"> 副研究员(专职科研) </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>毕业学校:</label>
+                                    <div class="audit-inout"> 武汉大学 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>毕业时间:</label>
+                                    <div class="audit-inout"> 2017-12-30 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>最高学历:</label>
+                                    <div class="audit-inout"> 博士研究生毕业 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>学位:</label>
+                                    <div class="audit-inout"> 法学博士 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>现专业技术职务:</label>
+                                    <div class="audit-inout"> </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>任职时间:</label>
+                                    <div class="audit-inout"> </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>年度考核结果:</label>
+                                    <div class="audit-inout"> </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>到校工作时间:</label>
+                                    <div class="audit-inout"> 2018-04-13</div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>学科类别:</label>
+                                    <div class="audit-inout"> 医科 </div>
+                                </li>
+                                <li class="audit-li">
+                                    <label>二级学科:</label>
+                                    <div class="audit-inout"> 国际法学 </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 科研项目 -->
+                    <div class="audit-rigth-content">
+                        <div class="audit-title">
+                            <h5>科研项目</h5>
+                        </div>
+                        <div class="audit-infoTable">
+                            <table id="infoTable" lay-filter="infoTable"></table>
+                        </div>
+                    </div>
+                    <!-- 科研论文 -->
+                    <div class="audit-rigth-content">
+                        <div class="audit-title">
+                            <h5>科研论文</h5>
+                        </div>
+                        <div class="audit-infoTable">
+                            <table id="infoTables" lay-filter="infoTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 调用JS的Start -->
+    <script src="../../../dist/js/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 最新的layui的Js引用  -->
+    <script src="../../../dist/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../../../dist/layui/lay/modules/laydate.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../../dist/layui/lay/modules/layer.js"></script>
+    <script src="../../../dist/js/common.js"></script>
+    <!-- 调用JS的End -->
+    <script type="text/html" id="EitTpl">
+        <button class="layui-btn layui-btn-sm">项目情况</button>
+    </script>
+    <script>
+        layui.use('table', function () {
+            var table = layui.table
+                , form = layui.form;
+
+            var infoTable = function (obj) {
+                table.render({
+                    elem: obj
+                    , url: '../table.json'
+                    , method: "GET"
+                    , cols: [[
+                        { type: 'checkbox', templet: '#checkboxTpl' }
+                        , { type: 'numbers', width: 100, title: '序列号' }
+                        , { field: 'caseName', title: '项目名称', width: 100, unresize: true, sort: true }
+                        , { field: 'caseStar', title: '项目情况' }
+                        , { field: 'caseTitle', title: '意见' }
+                        , { field: 'caseMoney', title: '批准经费', minWidth: 120, sort: true }
+                        , { field: 'caseCode', title: '合同号或批准号', minWidth: 120, unresize: true }
+                        , { field: 'caseYear', title: '执行年限', minWidth: 120, sort: true }
+                        , { field: 'caseNumber', title: '排名情况', minWidth: 120, sort: true }
+                        , { field: '', title: '审核', minWidth: 120, templet: '#EitTpl' }
+                        , { type: 'numbers', width: 100, title: '序列号' }
+                        , { field: 'caseName', title: '项目名称', width: 100, unresize: true, sort: true }
+                        , { field: 'caseStar', title: '项目情况' }
+                        , { field: 'caseTitle', title: '意见' }
+                        , { field: 'caseMoney', title: '批准经费', minWidth: 120, sort: true }
+                        , { field: 'caseCode', title: '合同号或批准号', minWidth: 120, unresize: true }
+                        , { field: 'caseYear', title: '执行年限', minWidth: 120, sort: true }
+                        , { field: 'caseNumber', title: '排名情况', minWidth: 120, sort: true }
+                        , { field: '', title: '审核', minWidth: 120, templet: '#EitTpl' }
+                    ]]
+                    , page: false,
+                    limits: [10, 20, 40, 60, 80]
+                    , limit: 10,
+                    request: {
+                        pageName: 'page' //页码的参数名称，默认：page
+                        , limitName: 'limit' //每页数据量的参数名，默认：limit
+                    },
+                    response: {
+                        statusName: 'code' //数据状态的字段名称，默认：code
+                        , statusCode: 0 //成功的状态码，默认：0
+                        , msgName: 'msg' //状态信息的字段名称，默认：msg
+                        , countName: 'count' //数据总数的字段名称，默认：count
+                        , dataName: 'data' //数据列表的字段名称，默认：data
+                    },
+                });
+            }
+            infoTable('#infoTable');
+            infoTable('#infoTables')
+            table.on('tool(companyTable)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                var data = obj.data //获得当前行数据
+                    , layEvent = obj.event; //获得 lay-event 对应的值
+                if (layEvent === 'examine') {
+                    // layer.msg('审核');
+                    layer.open({
+                        type: 2,
+                        title: "审核",
+                        content: '../auditDisplay/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                        , area: ['98%', '90%']
+                        , move: false
+                    });
+                }
+            });
+
+            //监听锁定操作
+            form.on('checkbox(checkboxTpl)', function (obj) {
+                layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+            });
+        });
+    </script>
+</body>
+
+</html>

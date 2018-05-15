@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>单位审核</title>
+    <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
+
+    <!-- 引用的公用CSS样式 -->
+    <link rel="stylesheet" href="../../../dist/css/styleAll.css">
+    <link rel="stylesheet" href="../../../dist/css/index.css">
+    <style>
+        h3 {
+            width: 100%;
+            padding: 0 2rem;
+        }
+
+        .table-con {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="layui-row" style="overflow-x: hidden;">
+    <div class="layui-col-lg12" style="height: 100%;">
+        <!-- 身体  -->
+        <section class="content" id="section-content" style="width: 100%;height: 100%;">
+            <h3>单位审核</h3>
+            <div class="mail">
+                <div class="mail-search automatic">
+                    <!-- <h4>查询条件</h4> -->
+                    <div class="inquiries-search automatic">
+                        <div class="inquiries-col">
+                            <label>用户条件 : </label>
+                            <div class="inquiries-input">
+                                <input class="layui-input" placeholder="请输入用户名/姓名模糊查询" type="text">
+                            </div>
+                        </div>
+                        <div class="inquiries-col">
+                            <label style="width: 123px;">现任专业技术职务 : </label>
+                            <div class="inquiries-input" style="margin-left: 130px;">
+                                <input class="layui-input" type="text">
+                            </div>
+                        </div>
+                        <div class="inquiries-col">
+                            <label>选送 : </label>
+                            <div class="inquiries-input">
+                                <input class="layui-input" type="text">
+                            </div>
+                        </div>
+                        <div class="inquiries-col">
+                            <label>年度考核结果 : </label>
+                            <div class="inquiries-input">
+                                <input class="layui-input" type="text">
+                            </div>
+                        </div>
+                        <div class="inquiries-col">
+                            <label>申报职务 : </label>
+                            <div class="inquiries-input">
+                                <input class="layui-input" placeholder="年度查询" type="text">
+                            </div>
+                        </div>
+                        <div class="inquiries-col">
+                            <label>最高学位 : </label>
+                            <div class="inquiries-input">
+                                <input class="layui-input" placeholder="年度查询" type="text">
+                            </div>
+                        </div>
+                        <div class="inquiries-col">
+                            <label>年度 : </label>
+                            <div class="inquiries-input">
+                                <input class="layui-input" placeholder="年度查询" type="text">
+                            </div>
+                        </div>
+                        <div class="inquiries-col-btn">
+                            <button class="layui-btn layui-btn-sm layui-btn-normal">
+                                <i class="iconfont icon-sousuo"></i>&nbsp;&nbsp;搜索</button>
+                            <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="readVal()">
+                                <i class="iconfont icon-qingchu"></i>&nbsp;&nbsp;清除</button>
+                            <!-- <button class="layui-btn layui-btn-sm layui-btn-primary" onclick="maxSection(this)"><i class="iconfont icon-zuidahua"></i>&nbsp;&nbsp;最大化</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-con">
+                <table id="companyTable" lay-filter="companyTable"></table>
+            </div>
+        </section>
+    </div>
+    <!-- 调用JS的Start -->
+    <script src="../../../dist/js/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 最新的layui的Js引用  -->
+    <script src="../../../dist/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../../../dist/layui/lay/modules/laydate.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../../dist/layui/lay/modules/layer.js"></script>
+    <script src="../../../dist/js/common.js"></script>
+    <!-- 调用JS的End -->
+
+    <script type="text/html" id="switchTpl">
+    <!-- 这里的 checked 的状态只是演示 -->
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="examine">审核</button>
+    </script>
+
+    <script type="text/html" id="checkboxTpl">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo" {{ d.id == 10006 ? 'checked' : '' }}>
+    </script>
+    <script type="text/html" id="yearKieTpl">
+    <!-- 这里的 checked 的状态只是演示 -->
+        {{# if(d.yearKie == 1){ }}
+            <span  style="color:#5FB878;" >合格</span>
+        {{# }else if(d.yearKie == 0){ }}
+            <span  style="color:#5FB878;" >不合格</span>
+        {{# } }}
+    </script>
+
+    <script>
+        layui.use('table', function () {
+            var table = layui.table
+                , form = layui.form;
+
+            table.render({
+                elem: '#companyTable'
+                , url: '../user.json'
+                ,method:"GET"
+                , cols: [[
+                    { type: 'checkbox' ,templet: '#checkboxTpl'}
+                    , { type: 'numbers', width: 100, title: '序列号' }
+                    , { field: 'id', title: 'ID', width: 100, unresize: true, sort: true }
+                    , { field: 'username', title: '名字' }
+                    , { field: 'wealth', title: '单位' }
+                    , { field: 'year', title: '年度', minWidth: 120, sort: true }
+                    , { field: 'highW', title: '最高学位', width: 110, unresize: true }
+                    , { field: 'highT', title: '最高学历', minWidth: 120, sort: true }
+                    , { field: 'nowWork', title: '现任专业技术职务', minWidth: 120, sort: true }
+                    , { field: 'yearKie', title: '年度考核结果', minWidth: 120, sort: true, templet: '#yearKieTpl', align: 'center' }
+                    , { field: 'postUP', title: '申报职务', minWidth: 120, sort: true }
+                    , { field: '', title: '操作', width: 85, templet: '#switchTpl', }
+                ]]
+                , page: true,
+                limits: [10, 20, 40, 60, 80]
+                , limit: 10,
+                request: {
+                    pageName: 'page' //页码的参数名称，默认：page
+                    , limitName: 'limit' //每页数据量的参数名，默认：limit
+                },
+                response: {
+                    statusName: 'code' //数据状态的字段名称，默认：code
+                    , statusCode: 0 //成功的状态码，默认：0
+                    , msgName: 'msg' //状态信息的字段名称，默认：msg
+                    , countName: 'count' //数据总数的字段名称，默认：count
+                    , dataName: 'data' //数据列表的字段名称，默认：data
+                },
+            });
+
+            table.on('tool(companyTable)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                var data = obj.data //获得当前行数据
+                    , layEvent = obj.event; //获得 lay-event 对应的值
+                if (layEvent === 'examine') {
+                    // layer.msg('审核');
+                    layer.open({
+                        type: 2, 
+                        title:"审核",
+                        content: '../auditDisplay/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                        ,area: ['98%', '90%']
+                        ,move:false
+                    }); 
+                }
+            });
+
+            //监听锁定操作
+            form.on('checkbox(checkboxTpl)', function (obj) {
+                layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+            });
+        });
+        //  获取查询的所有搜索框
+        var inquiriesVal = $(".inquiries-search").find(".inquiries-col").find('input');
+        //  清空查询的所有搜索框内的值
+        var readVal = function () {
+            $(inquiriesVal).val('');
+        }
+    </script>
+</body>
+
+</html>
