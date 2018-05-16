@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <title>单位审核</title>
+    <title>用户列表</title>
     <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
 
     <!-- 引用的公用CSS样式 -->
@@ -26,49 +26,37 @@
     <div class="layui-col-lg12" style="height: 100%;">
         <!-- 身体  -->
         <section class="content" id="section-content" style="width: 100%;height: 100%;">
-            <h3>单位审核</h3>
+            <h3>用户列表</h3>
             <div class="mail">
                 <div class="mail-search automatic">
                     <!-- <h4>查询条件</h4> -->
-                    <div class="inquiries-search automatic">
+                    <div class="inquiries-search automatic" style="min-height: auto;">
                         <div class="inquiries-col">
-                            <label>用户条件 : </label>
+                            <label>查询条件 : </label>
                             <div class="inquiries-input">
-                                <input class="layui-input" placeholder="请输入用户名/姓名模糊查询" type="text">
+                                <input class="layui-input" placeholder="请输入用户名/姓名/电子邮箱/手机号码或证件号码模糊" type="text">
                             </div>
                         </div>
                         <div class="inquiries-col">
-                            <label style="width: 123px;">现任专业技术职务 : </label>
+                            <label style="width: 123px;">用户类型 : </label>
                             <div class="inquiries-input" style="margin-left: 130px;">
                                 <input class="layui-input" type="text">
                             </div>
                         </div>
                         <div class="inquiries-col">
-                            <label>选送 : </label>
+                            <label>所属单位 : </label>
                             <div class="inquiries-input">
                                 <input class="layui-input" type="text">
                             </div>
                         </div>
                         <div class="inquiries-col">
-                            <label>年度考核结果 : </label>
+                            <label>用户角色 : </label>
                             <div class="inquiries-input">
                                 <input class="layui-input" type="text">
                             </div>
                         </div>
                         <div class="inquiries-col">
-                            <label>申报职务 : </label>
-                            <div class="inquiries-input">
-                                <input class="layui-input" placeholder="年度查询" type="text">
-                            </div>
-                        </div>
-                        <div class="inquiries-col">
-                            <label>最高学位 : </label>
-                            <div class="inquiries-input">
-                                <input class="layui-input" placeholder="年度查询" type="text">
-                            </div>
-                        </div>
-                        <div class="inquiries-col">
-                            <label>年度 : </label>
+                            <label>备注 : </label>
                             <div class="inquiries-input">
                                 <input class="layui-input" placeholder="年度查询" type="text">
                             </div>
@@ -103,27 +91,14 @@
 
     <script type="text/html" id="switchTpl">
     <!-- 这里的 checked 的状态只是演示 -->
-        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="examine">审核</button>
-    </script>
-
-    <script type="text/html" id="checkboxTpl">
-    <!-- 这里的 checked 的状态只是演示 -->
-    <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo" {{ d.id == 10006 ? 'checked' : '' }}>
-    </script>
-    <script type="text/html" id="yearKieTpl">
-    <!-- 这里的 checked 的状态只是演示 -->
-        {{# if(d.yearKie == 1){ }}
-            <span  style="color:#5FB878;" >合格</span>
-        {{# }else if(d.yearKie == 0){ }}
-            <span  style="color:#5FB878;" >不合格</span>
-        {{# } }}
+        <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="edit"> <i class="iconfont icon-iconset0136"></i> &nbsp;修改</button>
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del"> <i class="iconfont icon-shanchu"></i> &nbsp;删除</button>
     </script>
 
     <script>
         layui.use('table', function () {
             var table = layui.table
                 , form = layui.form;
-
             table.render({
                 elem: '#companyTable'
                 , url: '../user.json'
@@ -131,16 +106,14 @@
                 , cols: [[
                     { type: 'checkbox' ,templet: '#checkboxTpl'}
                     , { type: 'numbers', width: 100, title: '序列号' }
-                    , { field: 'id', title: 'ID', width: 100, unresize: true, sort: true }
-                    , { field: 'username', title: '名字' }
-                    , { field: 'wealth', title: '单位' }
-                    , { field: 'year', title: '年度', minWidth: 120, sort: true }
-                    , { field: 'highW', title: '最高学位', width: 110, unresize: true }
-                    , { field: 'highT', title: '最高学历', minWidth: 120, sort: true }
-                    , { field: 'nowWork', title: '现任专业技术职务', minWidth: 120, sort: true }
-                    , { field: 'yearKie', title: '年度考核结果', minWidth: 120, sort: true, templet: '#yearKieTpl', align: 'center' }
-                    , { field: 'postUP', title: '申报职务', minWidth: 120, sort: true }
-                    , { field: '', title: '操作', width: 85, templet: '#switchTpl', }
+                    , { field: 'userId', title: 'ID', width: 100, unresize: true, sort: true }
+                    , { field: 'userName', title: '用户名' }
+                    , { field: 'userBol', title: '用户姓名' }
+                    , { field: 'userType', title: '用户类型', minWidth: 120, sort: true }
+                    , { field: 'wealth', title: '部门名称', width: 110, unresize: true }
+                    , { field: 'certType', title: '证件类型', minWidth: 120, sort: true }
+                    , { field: 'cartCode', title: '证件号码', minWidth: 120, sort: true }
+                    , { field: 'null', title: '操作', minWidth: 85, templet: '#switchTpl', align:"center"}
                 ]]
                 , page: true,
                 limits: [10, 20, 40, 60, 80]
@@ -161,15 +134,17 @@
             table.on('tool(companyTable)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
                 var data = obj.data //获得当前行数据
                     , layEvent = obj.event; //获得 lay-event 对应的值
-                if (layEvent === 'examine') {
-                    // layer.msg('审核');
-                    layer.open({
-                        type: 2, 
-                        title:'<div style="text-align:center;">审核</div>',
-                        content: '../auditDisplay/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                        ,area: ['98%', '90%']
-                        ,move:false
-                    }); 
+                if (layEvent === 'edit') {
+                    layer.msg('修改');
+                    // layer.open({
+                    //     type: 2, 
+                    //     title:'<div style="text-align:center;">审核</div>',
+                    //     content: '../auditDisplay/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    //     ,area: ['98%', '90%']
+                    //     ,move:false
+                    // }); 
+                }else if(layEvent === 'del'){
+                    layer.msg('删除');
                 }
             });
 

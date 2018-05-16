@@ -4,6 +4,14 @@
  * @date    2018-4-26 15:20:23
  * @version $Id$
  */
+/**
+ * 公用加减的JS变量定义！ 
+ * 
+ */
+$(function () {
+    // bootstrap 的 鼠标悬停气泡定义
+    $('[data-toggle="tooltip"]').tooltip()
+})
 var common = {
     /**
      *  搜索框的渲染

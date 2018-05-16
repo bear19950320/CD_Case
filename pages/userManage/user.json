@@ -1,0 +1,35 @@
+{
+    "code": 0,
+    "msg": "测试提示",
+    "count": 3,
+    "data": [
+        {
+            "userId": 10000,
+            "userName":"admin",
+            "wealth":"计算机学院",
+            "userBol":"用户",
+            "userType":"单位管理员",
+            "certType":"身份证",
+            "cartCode":"5116324578965236"
+        },
+        {
+            "userId": 10001,
+            "userName":"user",
+            "wealth":"计算机学院",
+            "userBol":"user",
+            "userType":"在职教职工",
+            "certType":"身份证",
+            "cartCode":"511687445322458741"
+        },
+        {
+            "userId": 10002,
+            "userName":"system",
+            "wealth":"四川大学",
+            "userBol":"系统管理员",
+            "userType":"系统管理员",
+            "certType":"护照",
+            "cartCode":"145896332545896"
+        }
+        
+    ]
+}

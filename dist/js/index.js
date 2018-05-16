@@ -2,6 +2,7 @@
  * jquery的引进
  */
 document.write("<script src='../../dist/js/jquery.min.js'></script>");
+
 /**
  * 最新的layui的Js引用
  */
