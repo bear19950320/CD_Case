@@ -66,6 +66,8 @@
                                 <i class="iconfont icon-sousuo"></i>&nbsp;&nbsp;搜索</button>
                             <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="readVal()">
                                 <i class="iconfont icon-qingchu"></i>&nbsp;&nbsp;清除</button>
+                            <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="addUser()">
+                                <i class="iconfont icon-tianjia"></i>&nbsp;&nbsp;新增用户</button>
                             <!-- <button class="layui-btn layui-btn-sm layui-btn-primary" onclick="maxSection(this)"><i class="iconfont icon-zuidahua"></i>&nbsp;&nbsp;最大化</button> -->
                         </div>
                     </div>
@@ -74,6 +76,7 @@
             <div class="table-con">
                 <table id="companyTable" lay-filter="companyTable"></table>
             </div>
+            <input type="text" class="hide" id="userListVal">
         </section>
     </div>
     <!-- 调用JS的Start -->
@@ -102,9 +105,9 @@
             table.render({
                 elem: '#companyTable'
                 , url: '../user.json'
-                ,method:"GET"
+                , method: "GET"
                 , cols: [[
-                    { type: 'checkbox' ,templet: '#checkboxTpl'}
+                    { type: 'checkbox', templet: '#checkboxTpl' }
                     , { type: 'numbers', width: 100, title: '序列号' }
                     , { field: 'userId', title: 'ID', width: 100, unresize: true, sort: true }
                     , { field: 'userName', title: '用户名' }
@@ -113,7 +116,7 @@
                     , { field: 'wealth', title: '部门名称', width: 110, unresize: true }
                     , { field: 'certType', title: '证件类型', minWidth: 120, sort: true }
                     , { field: 'cartCode', title: '证件号码', minWidth: 120, sort: true }
-                    , { field: 'null', title: '操作', minWidth: 85, templet: '#switchTpl', align:"center"}
+                    , { field: 'null', title: '操作', minWidth: 85, templet: '#switchTpl', align: "center" }
                 ]]
                 , page: true,
                 limits: [10, 20, 40, 60, 80]
@@ -135,22 +138,24 @@
                 var data = obj.data //获得当前行数据
                     , layEvent = obj.event; //获得 lay-event 对应的值
                 if (layEvent === 'edit') {
-                    layer.msg('修改');
-                    // layer.open({
-                    //     type: 2, 
-                    //     title:'<div style="text-align:center;">审核</div>',
-                    //     content: '../auditDisplay/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                    //     ,area: ['98%', '90%']
-                    //     ,move:false
-                    // }); 
-                }else if(layEvent === 'del'){
+                    // 为下一个页面的赋值取值;
+                    $("#userListVal").val(JSON.stringify(data));
+                    layer.open({
+                        type: 2,
+                        title: '<div style="text-align:center;">修改用户</div>'
+                        , content: '../userAdd/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                        , area: ['60%', '700px']
+                        , move: false
+                        , btn: ["确认", "取消"]
+                        , btnAlign: 'c'
+                        , end: function () {
+                            // 结束后清除赋值方便新增用户利用
+                            $("#userListVal").val('')
+                        }
+                    });
+                } else if (layEvent === 'del') {
                     layer.msg('删除');
                 }
-            });
-
-            //监听锁定操作
-            form.on('checkbox(checkboxTpl)', function (obj) {
-                layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
             });
         });
         //  获取查询的所有搜索框
@@ -158,7 +163,33 @@
         //  清空查询的所有搜索框内的值
         var readVal = function () {
             $(inquiriesVal).val('');
+        };
+        var addUser = function () {
+            layer.open({
+                type: 2,
+                title: '<div style="text-align:center;">新增用户</div>',
+                content: '../userAdd/index.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                , area: ['60%', '700px']
+                , move: false
+                , btn: ["确认", "取消"]
+                , btnAlign: 'c'
+            });
         }
+        // 字符串反向输出;
+        function reverseString(str) {
+            str = str.split("").reverse().join("")
+            return str;
+        }
+        console.log(reverseString("i m Bear and Jim"))
+        function palindrome(str) {
+            str = str.replace(/[^a-zA-Z\d]/g, "");
+            return str.toLowerCase() == str
+                .split("")
+                .reverse()
+                .join("")
+                .toLowerCase();
+        }
+        console.log(palindrome("0_0 (: /-\ :) 0-0"))
     </script>
 </body>
 

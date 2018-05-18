@@ -39,7 +39,11 @@ ol, ul {
     content: "";
     clear: both;
 }
-
+/* select{
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    line-height: 2rem;
+} */
 @media screen and (max-width: 1170px) {
     html, body {
         height: 100%;
@@ -460,7 +464,7 @@ ol, ul {
 
 .mail {
     padding: 0.25rem 1rem;
-    background: rgb(228, 226, 226);
+    background: #F1EFF2;
     border-bottom: 1px solid #a09f9f;
 }
 
@@ -754,4 +758,86 @@ ol, ul {
     line-height: 2rem;
     text-align: center;
     width: 10%;
+}
+/* 用户管理注册样式 */
+.user-con {
+    width: 50%;
+    min-height: 300px;
+    background: #e6e3e3;
+    margin: auto;
+    margin-bottom: 0.5rem;
+    border: 1px solid #fff;
+}
+
+.user-title {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 2.5;
+    padding-left: 2rem;
+    background: #fff;
+}
+
+.user-area {
+    position: relative;
+}
+
+.user-left {
+    float: left;
+    width: 65%;
+}
+
+.user-col {
+    width: 100%;
+    margin: 0.6rem 0;
+    padding: 0 0.5rem;
+}
+
+.user-col>label {
+    font-weight: 100;
+    width: 83px;
+    font-size: 1.25rem;
+    margin: 0;
+    line-height: 2;
+    float: left;
+    text-align: right;
+}
+
+.user-col>.required::after {
+    content: "*";
+    padding-left: 3px;
+    color: red;
+}
+
+.user-col>label:after {
+    content: ":"
+}
+
+.user-col>.user-inout {
+    margin-left: 90px;
+    background: #E0DDE0;
+}
+
+.user-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 66%;
+}
+
+/* select 和 input 的组合 */
+
+.user-col>.user-se-in>select {
+    width: 15%;
+    float: left;
+}
+
+.user-col>.user-se-in>input {
+    width: 83%;
+    float: right;
+}
+.user-btn{
+    text-align: center;
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <title>新增用户</title>
+    <title>注册用户</title>
     <link href="../../../assets/image/logo-min.jpg" rel="icon" type="image/icon">
 
     <!-- 引用的公用CSS样式 -->
@@ -22,9 +22,10 @@
     <div class="layui-col-lg12" style="height: 100%;">
         <!-- 身体  -->
         <section class="content" id="section-content" style="width: 100%;height: 100%;">
+            <h3>注册用户</h3>
             <div class="mail">
                 <!-- 表格身体1  -->
-                <div class="user-con" style="width: 100%;">
+                <div class="user-con">
                     <div class="user-title">用户详情信息</div>
                     <div class="user-section">
                         <!-- input加图片 -->
@@ -117,7 +118,7 @@
                     </div>
                 </div>
                 <!-- 表格身体2  -->
-                <div class="user-con" style="width: 100%;">
+                <div class="user-con">
                     <div class="user-title">用户角色与权限</div>
                     <div class="user-section">
                         <!-- 长条input -->
@@ -155,11 +156,15 @@
                             <div class="user-col automatic">
                                 <label>备注</label>
                                 <div class="user-inout">
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea  class="form-control" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="user-btn"> 
+                    <button class="btn btn-primary"> <i class="iconfont icon-gou"></i>  提交</button>
+                    <button class="btn btn-warning"> <i class="iconfont icon-qingchu"></i>  清理</button>
                 </div>
             </div>
         </section>
@@ -178,12 +183,7 @@
     <!-- 调用JS的End -->
 
     <script>
-        // 上一个页面的赋值元素取值;
-        var userListVal = window.parent.$("#userListVal").val();
-        if (userListVal) {
-            userListVal = JSON.parse(userListVal)
-            console.log(userListVal)
-        }
+
     </script>
 </body>
 
